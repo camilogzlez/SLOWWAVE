@@ -1,0 +1,12 @@
+photo1:
+  title: "El Chalten"
+  description: "Pareja besandose"
+  date: Date.new(2021, 4, 14, 18)
+  description: "Noche de Faro en recoleta"
+  user: camilo
+photo2:
+  title: "Faro"
+  description: "otra"
+  date: Date.new(2021, 4, 14, 18)
+  description: "Noche de Faro en recoleta"
+  user: camilo
