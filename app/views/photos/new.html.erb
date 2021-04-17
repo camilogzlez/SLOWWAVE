@@ -1,0 +1,10 @@
+<h1>Add a photo</h1>
+
+<%= simple_form_for @photo do |f| %>
+  <%= f.input :title %>
+  <%= f.input :date %>
+  <%= f.input :location %>
+  <%= f.input :description %>
+  <%= f.input :photo, as: :file, label_html: { class: "text-black"}, label: "Sube un archivo pdf (opcional)" %>
+  <%= f.submit "Add Photo", class: "btn btn-primary" %>
+<% end %>

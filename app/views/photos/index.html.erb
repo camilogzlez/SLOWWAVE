@@ -1,8 +1,8 @@
 
-
+<h1>Todas</h1>
 <% @photos.each do |photo| %>
   <%= cl_image_tag photo.photo.key, alt: "photo", height: 300 %>
-  <h2><%=photo.title %></h2>
+  <h2 class="title" ><%=photo.title %></h2>
   <p><%= photo.description%></p>
 <% end %>
   
