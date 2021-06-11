@@ -1,0 +1,186 @@
+HTML CSS JSResult Skip Results Iframe EDIT ON
+
+/* RESET RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --white: #fff;
+  --black: #221f1f;
+  --lightpurple: #9e91f2;
+  --darkgray: #1e1f26;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  justify-content: left;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+   font-size: 1rem;
+}
+
+body {
+  position: relative;
+  font: 16px/1.5 sans-serif;
+  color: var(--white);
+}
+
+.fab {
+  font-size: 32px;
+  color: #d1d3d4;
+  margin-left: 58rem;
+  margin-top: 1rem
+}
+
+.fab:hover {
+
+  color: #3852a4;
+
+}
+
+/* MAIN RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.trigger-menu-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 2;
+  background: var(--lightpurple);
+  transition: transform 0.4s;
+}
+
+
+.page-header .trigger-menu {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #d1d3d4;
+  letter-spacing: 0.2em;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.page-header .trigger-menu:hover {
+color: #3852a4;
+}
+
+.page-header .trigger-menu svg {
+  fill: #d1d3d4;
+  margin-right: 8px;
+  transition: transform 0.3s;
+}
+
+.page-header .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 3rem;
+  bottom: 0;
+  display: none;
+  text-align: right;
+  padding: 15vh 0 5vh;
+  overflow: auto;
+  z-index: 1;
+  background: var(--lightpurple);
+ 
+}
+
+.page-header .menu a {
+  font-size: 1.5rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #3852a4;
+ text-align: center;
+}
+
+.page-header .sub-menu a {
+  font-size: 1.5rem;
+}
+
+.lottie-wrapper {
+  position: fixed;
+  bottom: 50px;
+  right: 25px;
+  z-index: 1;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.page-main section {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.page-main section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+
+/* BODY CLASSES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.menu-open {
+  overflow: hidden;
+}
+
+.menu-open .trigger-menu-wrapper {
+  background: transparent;
+}
+
+.menu-open .page-header .menu {
+  display: block;
+}
+
+.menu-open .page-header svg {
+  transform: rotate(45deg);
+}
+
+.menu-open-with-lottie .page-header .menu {
+  padding: 5vh 0;
+}
+
+.scroll-down .trigger-menu-wrapper {
+  transform: translate3d(0, -100%, 0);
+}
+
+// .scroll-down .lottie-wrapper {
+//   background: var(--darkgray);
+// }
+
+.scroll-up .trigger-menu-wrapper {
+  transform: none;
+}
+
+.scroll-up:not(.menu-open) .trigger-menu-wrapper {
+  background: var(--lightpurple);
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+.navbar-brand img {
+  width: 40px;
+}
