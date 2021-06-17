@@ -42,8 +42,10 @@ body {
 .fab {
   font-size: 32px;
   color: #d1d3d4;
-  margin-left: 58rem;
-  margin-top: 1rem
+  padding: 20px;
+  z-index: 2;
+  background: var(--lightpurple);
+  transition: transform 0.4s;
 }
 
 .fab:hover {
@@ -54,6 +56,11 @@ body {
 
 /* MAIN RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.social{
+ display: flex;
+ justify-content: space-between;
+
+}
 .trigger-menu-wrapper {
   position: fixed;
   top: 0;
@@ -61,7 +68,7 @@ body {
   right: 0;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 5px;
   z-index: 2;
   background: var(--lightpurple);
   transition: transform 0.4s;
