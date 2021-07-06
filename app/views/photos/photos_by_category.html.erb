@@ -1,0 +1,18 @@
+
+  <div class ="containersup">
+  
+      <% @photos.each do |photo| %>
+    <div class="gallery-container w-2">
+          <div class="gallery-item">
+            <div class="image">
+
+          
+               <a href = <%= cl_image_path photo.photo.key, alt: "photo", :height=>559, :width=>850, :crop=>"scale" %> data-toggle="lightbox" data-gallery="example-gallery" >
+              <%= cl_image_tag photo.photo.key, alt: "photo", :class=> "img-fluid"%>
+             </a>
+            </div>
+        </div>
+    </div>
+      <% end %>
+
+  </div>

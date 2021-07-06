@@ -9,6 +9,8 @@
 require "open-uri"
 
 User.destroy_all
+Photo.destroy_all
+Category.destroy_all
 
 camilo = User.create!(email: "camilogzlez@gmail.com", password: "camilogzlez")
 camilo.save!
@@ -69,5 +71,21 @@ photo5 = Photo.create!(
 
 photo5.photo.attach(io: open("https://res.cloudinary.com/camilogzlez/image/upload/v1617215915/SLOWWAVE/wind2_t2ge6h.jpg"), filename: "photo5.png", content_type: "image/jpeg")
 photo5.save!
+
+
+puts "Creating four categories"
+
+Street = Category.create!(name: 'Street')
+Travel = Category.create!(name: 'Travel')
+Nature = Category.create!(name: 'Nature')
+Portrait = Category.create!(name: 'Portrait')
+
+puts "Creating five relationships category-photo"
+
+CategoryPhoto.create!(photo: photo1, category: Street)
+CategoryPhoto.create!(photo: photo2, category: Street)
+CategoryPhoto.create!(photo: photo3, category: Travel)
+CategoryPhoto.create!(photo: photo4, category: Portrait)
+CategoryPhoto.create!(photo: photo5, category: Nature)
 
 puts "Seeds Creadas"

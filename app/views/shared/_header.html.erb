@@ -22,18 +22,15 @@
 
 
     <ul class="menu">
+    <% Category.all.each do |category| %>
       <li>
-        <a href="">STREET</a>
-        </li>
-          <li>
-        <a href="">TRAVEL</a>
-         </li>
-          <li>
-        <a href="">NATURE</a>
-         </li>
-          <li>
-        <a href="">PORTRAIT</a>
-         </li>
+        <%= link_to photos_by_category_path(param:category.name) do  %>
+          <p><%= category.name %></p>
+        <% end %>
+      </li>
+    <% end %>
+
+
     </ul>
   </nav>
 </header>

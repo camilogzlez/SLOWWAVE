@@ -5,6 +5,10 @@ class PhotosController < ApplicationController
     @photos = Photo.all
   end
   
+  def show
+     @photo = Photo.find(params[:id])
+  end
+
   def new
     @photo = Photo.new
   end
@@ -18,6 +22,10 @@ class PhotosController < ApplicationController
       raise
       render :new
     end
+  end
+
+  def photos_by_category
+    @photos = Photo.includes(:categories).where(categories: {name: params[:param]})
   end
   
 
