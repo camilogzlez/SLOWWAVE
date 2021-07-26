@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/JoJoS003/light-gallery-rails.git
+  revision: a69c70690e950a4fe714f2e7add4f68c4504b3cd
+  specs:
+    light_gallery_rails (1.2.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -270,6 +276,7 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.7)
   launchy
+  light_gallery_rails!
   listen (~> 3.3)
   pg (~> 1.1)
   pry-byebug

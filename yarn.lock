@@ -4192,6 +4192,16 @@ last-call-webpack-plugin@^3.0.0:
     lodash "^4.17.5"
     webpack-sources "^1.1.0"
 
+lightbox2@^2.11.3:
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/lightbox2/-/lightbox2-2.11.3.tgz#057d9244badb0f0fd4603c25d739a19a85a71978"
+  integrity sha512-Q4v6il/OK9ttgEkAxSok/jrI/LUbqTrePFchqP2x/59qaDIZgJjEEc5Xf7peSMc/55Zo5PAgmX6EiN/BeEeUBQ==
+
+lightgallery@^2.1.8:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/lightgallery/-/lightgallery-2.1.8.tgz#11fc2a84f8719ad86184ddab59f46222b93f533c"
+  integrity sha512-YyPVsnCDn6NHDemJ44NM0cgqROOpxvLlO09fQz+++mo9BVmhyRvn+jykZsZit53QiHQPlgLxLhMRa5cCF3htkg==
+
 lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
@@ -6595,6 +6605,11 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
+
+simplelightbox@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/simplelightbox/-/simplelightbox-2.8.0.tgz#5716a633e5643e6d01f8c264e1179d00c7133c7c"
+  integrity sha512-OvX52h8bpVwR0WcKd3YX2fNJnEkLjel+bH5osMW1umuUG5ERvotVwZCmfl2sAkkJ8G97k3jn5QNh6IoPzD6Gug==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

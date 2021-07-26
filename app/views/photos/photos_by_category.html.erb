@@ -6,10 +6,11 @@
           <div class="gallery-item">
             <div class="image">
 
-          
-               <a href = <%= cl_image_path photo.photo.key, alt: "photo", :height=>559, :width=>850, :crop=>"scale" %> data-toggle="lightbox" data-gallery="example-gallery" >
-              <%= cl_image_tag photo.photo.key, alt: "photo", :class=> "img-fluid"%>
+         
+               <a href = <%= cl_image_path photo.photo.key, alt: "photo"%> data-lightbox="roadtrip">
+              <%= cl_image_tag photo.photo.key, alt: "photo"%>
              </a>
+      
             </div>
         </div>
     </div>
