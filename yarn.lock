@@ -4197,10 +4197,10 @@ lightbox2@^2.11.3:
   resolved "https://registry.yarnpkg.com/lightbox2/-/lightbox2-2.11.3.tgz#057d9244badb0f0fd4603c25d739a19a85a71978"
   integrity sha512-Q4v6il/OK9ttgEkAxSok/jrI/LUbqTrePFchqP2x/59qaDIZgJjEEc5Xf7peSMc/55Zo5PAgmX6EiN/BeEeUBQ==
 
-lightgallery@^2.1.8:
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/lightgallery/-/lightgallery-2.1.8.tgz#11fc2a84f8719ad86184ddab59f46222b93f533c"
-  integrity sha512-YyPVsnCDn6NHDemJ44NM0cgqROOpxvLlO09fQz+++mo9BVmhyRvn+jykZsZit53QiHQPlgLxLhMRa5cCF3htkg==
+lightgallery@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/lightgallery/-/lightgallery-2.3.0.tgz#936f19d36105848fbbdbd7fbb1e43ab9b0605ebe"
+  integrity sha512-kdu+uQM2X4LUN2G2tTp72ZOLfwmGwZFjiVQBqYY2E2zL1ADibKwnxZUBEw2zI5zefDe/71IHg+6kBRTbr8CGyg==
 
 lines-and-columns@^1.1.6:
   version "1.1.6"
