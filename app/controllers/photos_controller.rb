@@ -1,12 +1,12 @@
 class PhotosController < ApplicationController
   skip_before_action :authenticate_user!
-  
- def index
+
+  def index
     @photos = Photo.all
   end
-  
+
   def show
-     @photo = Photo.find(params[:id])
+    @photo = Photo.find(params[:id])
   end
 
   def new
@@ -19,15 +19,13 @@ class PhotosController < ApplicationController
     if @photo.save
       redirect_to photos_path(@photo)
     else
-      raise
       render :new
     end
   end
 
   def photos_by_category
-    @photos = Photo.includes(:categories).where(categories: {name: params[:param]})
+    @photos = Photo.includes(:categories).where(categories: { name: params[:param] })
   end
-  
 
   private
 

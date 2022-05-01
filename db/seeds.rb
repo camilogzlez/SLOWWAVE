@@ -73,6 +73,54 @@ photo5.photo.attach(io: open("https://res.cloudinary.com/camilogzlez/image/uploa
 photo5.save!
 
 
+photo6 = Photo.create!(
+  title: "Librarycompanion",
+  date: Date.new(2021, 4, 14, 18),
+  location: "Biblioteca Nacional, Bs As.",
+  description: "Pareja",
+  user: camilo
+)
+
+photo6.photo.attach(io: open("https://res.cloudinary.com/camilogzlez/image/upload/v1646599008/SLOWWAVE/DSCF3692_bht62s.jpg"), filename: "photo6.png", content_type: "image/jpeg")
+photo6.save!
+
+
+photo7 = Photo.create!(
+  title: "Librarycompanion",
+  date: Date.new(2021, 4, 14, 18),
+  location: "Biblioteca Nacional, Bs As.",
+  description: "Pareja",
+  user: camilo
+)
+
+photo7.photo.attach(io: open("https://res.cloudinary.com/camilogzlez/image/upload/v1646598964/SLOWWAVE/DSCF3635_g2kz1s.jpg"), filename: "photo7.png", content_type: "image/jpeg")
+photo7.save!
+
+photo8 = Photo.create!(
+  title: "Librarycompanion",
+  date: Date.new(2021, 4, 14, 18),
+  location: "Biblioteca Nacional, Bs As.",
+  description: "Pareja",
+  user: camilo
+)
+
+photo8.photo.attach(io: open("https://res.cloudinary.com/camilogzlez/image/upload/v1646599070/SLOWWAVE/DSCF3969_yymk42.jpg"), filename: "photo8.png", content_type: "image/jpeg")
+photo8.save!
+
+photo9 = Photo.create!(
+  title: "Librarycompanion",
+  date: Date.new(2021, 4, 14, 18),
+  location: "Biblioteca Nacional, Bs As.",
+  description: "Pareja",
+  user: camilo
+)
+
+photo9.photo.attach(io: open("https://res.cloudinary.com/camilogzlez/image/upload/v1646599099/SLOWWAVE/DSCF4039_v0zjfh.jpg"), filename: "photo9.png", content_type: "image/jpeg")
+photo9.save!
+
+
+
+
 puts "Creating four categories"
 
 Street = Category.create!(name: 'Street')
@@ -87,5 +135,9 @@ CategoryPhoto.create!(photo: photo2, category: Street)
 CategoryPhoto.create!(photo: photo3, category: Travel)
 CategoryPhoto.create!(photo: photo4, category: Portrait)
 CategoryPhoto.create!(photo: photo5, category: Nature)
+CategoryPhoto.create!(photo: photo6, category: Portrait)
+CategoryPhoto.create!(photo: photo7, category: Portrait)
+CategoryPhoto.create!(photo: photo8, category: Street)
+CategoryPhoto.create!(photo: photo9, category: Street)
 
 puts "Seeds Creadas"
