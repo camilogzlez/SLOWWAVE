@@ -25,7 +25,8 @@ ActiveStorage.start()
 import "bootstrap";
 import { initNavbar } from '../plugins/init_navbar';
 import { initHeader } from '../plugins/init_header';
-// import { initLightBox } from '../plugins/init_lightbox';
+import { initSelect2 } from '../plugins/init_select2';
+
 
 // Internal imports, e.g:
 import { initScrollKeeper } from "../plugins/init_scroll_keeper"
@@ -37,9 +38,11 @@ Turbolinks.scroll = {};
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
+  initSelect2();
     initHeader();
     initScrollKeeper();
-    // initLightBox();
+ 
   
 });
+
+import "controllers"

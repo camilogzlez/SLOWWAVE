@@ -1,11 +1,30 @@
-<h1>Add a photo</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="form-new">
+        <h1>Add a photo</h1>
+        
+
 
 <%= simple_form_for @photo do |f| %>
-  <%= f.input :title %>
-  <%# <%= f.input :category %> %>
-  <%= f.input :date %>
-  <%= f.input :location %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file, label_html: { class: "text-black"}, label: "Sube un archivo pdf (opcional)" %>
-  <%= f.submit "Add Photo", class: "btn btn-primary" %>
-<% end %>
+      <%= f.association :categories, input_html: { class:"form-control select2", id:"js-example-basic-multiple", name: "categories[]", multiple: 'multiple' },  label: "Selecciona la/s categoría/s de tu foto:", label_html: { class: "text-black mr-3"} %>
+      <%= f.input :title, placeholder: "Título de tu foto", label_html: {class: "text-black"}, label: "Título de la Foto"%>
+      <%= f.input :location %>
+      <%= f.input :description, as: :text, class:"label", placeholder: "Describe tu foto", label_html: { class: "text-black"}, label: "Describe con tus palabras la foto."%>
+      <%= f.input :date, as: :string, required: false, input_html: 
+      {class: "datepicker deadline"}, placeholder: "Fecha maxima de recepción", label_html: { class: "text-black"}, label: "Date" %>
+      <%= f.input :photo, as: :file, label_html: { class: "text-black"}, label: "Sube un archivo pdf (opcional)" %>
+      <%= f.submit "Sube tu Foto", class: "btn btn-primary" %>
+    <% end %>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

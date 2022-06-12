@@ -17,7 +17,12 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.user = current_user
     if @photo.save
-      redirect_to photos_path(@photo)
+        params[:categories].shift
+        params[:categories].each do |id|
+        category = Category.find(id.to_i)
+        CategoryPhoto.create(photo: @photo, category: category )
+        end
+      redirect_to photos_path(@photo), notice: "¡Has subido correctamente tu photo!"
     else
       render :new
     end

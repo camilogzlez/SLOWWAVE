@@ -1,0 +1,51 @@
+.form-new {
+  background-color: #ebe7eba4;
+  color: #046CE7;
+  height: 910px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top-left-radius: 10px ;
+  border-bottom-left-radius: 10px ;
+  h4{
+    margin-top: 32px;
+    margin-left: 68px;
+    margin-bottom: 36px;
+  }
+
+}
+
+
+.new_instructions {
+  background-color: #046CE7;
+  height: 910px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: rgb(69, 21, 212);
+  border-top-right-radius: 10px ;
+  border-bottom-right-radius: 10px ;
+
+  p{
+    margin-top: 28px;
+  }
+
+  h3{
+    margin-top: 50px;
+  }
+}
+
+.style_image{
+  width: 350px;
+  margin-top: 48px;
+}
+
+.deadline{
+  width: 280px;
+}
+
+.categorydesign{
+  margin-left: 20px;
+}
+
+.select2-container--default.select2-selection--multiple {
+  background-color: yellow !important;
+}
