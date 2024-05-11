@@ -11,6 +11,7 @@ require "open-uri"
 User.destroy_all
 Photo.destroy_all
 Category.destroy_all
+Project.destroy_all
 
 camilo = User.create!(email: "camilogzlez@gmail.com", password: "camilogzlez")
 camilo.save!
@@ -139,5 +140,14 @@ CategoryPhoto.create!(photo: photo6, category: Portrait)
 CategoryPhoto.create!(photo: photo7, category: Portrait)
 CategoryPhoto.create!(photo: photo8, category: Street)
 CategoryPhoto.create!(photo: photo9, category: Street)
+
+puts "Creating four projects"
+
+tango = Project.create!(title: 'Tango')
+bares_notables = Project.create!(title: 'Bares Notables')
+
+ProjectPhoto.create!(photo: photo3, project: tango)
+ProjectPhoto.create!(photo: photo4, project: bares_notables)
+
 
 puts "Seeds Creadas"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_001039) do
+ActiveRecord::Schema.define(version: 2024_05_03_094823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_001039) do
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position"
     t.index ["category_id"], name: "index_category_photos_on_category_id"
     t.index ["photo_id"], name: "index_category_photos_on_photo_id"
   end
@@ -67,6 +68,23 @@ ActiveRecord::Schema.define(version: 2021_06_18_001039) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
+  create_table "project_photos", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "photo_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photo_id"], name: "index_project_photos_on_photo_id"
+    t.index ["project_id"], name: "index_project_photos_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,4 +104,6 @@ ActiveRecord::Schema.define(version: 2021_06_18_001039) do
   add_foreign_key "category_photos", "categories"
   add_foreign_key "category_photos", "photos"
   add_foreign_key "photos", "users"
+  add_foreign_key "project_photos", "photos"
+  add_foreign_key "project_photos", "projects"
 end

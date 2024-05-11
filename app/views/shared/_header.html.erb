@@ -1,36 +1,55 @@
 <header class="page-header">
   <nav>
     <div class="trigger-menu-wrapper">
-        <div class="logo">
-          <%= link_to "#", class: "navbar-brand" do %>
-            <%= image_tag "header/logo.png", style:"width: 100%" %>
-          <% end %>
-        </div>
-       
-          <div class= "social">
-       <a href="https://www.instagram.com/camilogzlez/"target="_blank"><i class="fab fa-instagram"></i></a>
-      <button class="trigger-menu">
-       <div>
-           </div>
-        <svg width="12" height="12" viewBox="0 0 24 24">
-          <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-        </svg>
-        <span>CATEGORIES</span>
-      </button>
-    </div>
-    </div>
-
-
-    <ul class="menu">
-    <% Category.all.each do |category| %>
-      <li>
-        <%= link_to photos_by_category_path(param:category.name) do  %>
-          <p><%= category.name %></p>
+      <div class="logo">
+        <%= link_to "#", class: "navbar-brand" do %>
+          <%= image_tag "header/logo.png", style:"width: 100%" %>
         <% end %>
-      </li>
-    <% end %>
+      </div>
 
+      <div class="social">
+        <a href="https://www.instagram.com/camilogzlez/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
 
-    </ul>
+      <div class="about">
+        <span>ABOUT</span>
+      </div>
+
+       <div>
+        <button class="trigger-menu-categories">
+            <svg width="12" height="12" viewBox="0 0 24 24">
+              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+            </svg>
+            <span>CATEGORIES</span>
+        </button>
+        <ul class="menu-categories menu">
+          <% Category.all.each do |category| %>
+            <li>
+              <%= link_to photos_by_category_path(param:category.name) do  %>
+                <p><%= category.name %></p>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div>
+        <button class="trigger-menu-projects">
+            <svg width="12" height="12" viewBox="0 0 24 24">
+              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+            </svg>
+            <span>PROJECTS</span>
+        </button>
+        <ul class="menu-projects menu">
+          <% Project.all.each do |project| %>
+            <li>
+              <%= link_to photos_by_project_path(param:project.title) do  %>
+                <p><%= project.title %></p>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+          </div>
+    </div>
   </nav>
 </header>

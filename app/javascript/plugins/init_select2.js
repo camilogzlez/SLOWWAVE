@@ -1,12 +1,17 @@
 import $ from 'jquery';
 import 'select2';
 
-const initSelect2 = (value) => {
-    if (value) {
-      const link = document.querySelector('#js-example-basic-multiple');
-      link.click();
+const initSelect2 = () => {
+  const categoriesSelect = $('#categories-select');
+  const projectsSelect = $('#projects-select');
+
+  if (categoriesSelect.length) {
+    categoriesSelect.select2();
   }
-  $('#js-example-basic-multiple').select2();
+
+  if (projectsSelect.length) {
+    projectsSelect.select2();
+  }
 };
 
 export { initSelect2 };

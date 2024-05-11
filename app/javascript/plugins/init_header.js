@@ -2,20 +2,22 @@
 const initHeader = () => {
 
 const body = document.body;
-const triggerMenu = document.querySelector(".page-header .trigger-menu");
-const nav = document.querySelector(".page-header nav");
-const menu = document.querySelector(".page-header .menu");
-const lottieWrapper = document.querySelector(".lottie-wrapper");
+const triggerMenuCategories = document.querySelector(".page-header .trigger-menu-categories");
+const triggerMenuProjects = document.querySelector(".page-header .trigger-menu-projects");
 const lottiePlayer = document.querySelector("lottie-player");
 const scrollUp = "scroll-up";
 const scrollDown = "scroll-down";
 let lastScroll = 0;
 
-triggerMenu.addEventListener("click", () => {
-  body.classList.toggle("menu-open");
-});
+  triggerMenuCategories.addEventListener("click", () => {
+    body.classList.toggle("menu-open-categories"); // Use a different class for categories
+    body.classList.remove("menu-open-projects"); // Close projects menu
+  });
 
-// s
+  triggerMenuProjects.addEventListener("click", () => {
+    body.classList.toggle("menu-open-projects"); // Use a different class for projects
+    body.classList.remove("menu-open-categories"); // Close categories menu// Ensure the other SVG is closed
+  });
 
 window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;

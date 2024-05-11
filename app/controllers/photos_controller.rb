@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  skip_before_action :authenticate_user!
+  # skip_before_action :authenticate_user!
 
   def index
     @photos = Photo.all
@@ -19,9 +19,16 @@ class PhotosController < ApplicationController
     if @photo.save
         params[:categories].shift
         params[:categories].each do |id|
-        category = Category.find(id.to_i)
-        CategoryPhoto.create(photo: @photo, category: category )
+          category = Category.find(id.to_i)
+          CategoryPhoto.create(photo: @photo, category: category )
         end
+if params[:projects].present?
+  params[:projects].shift
+  params[:projects].each do |id|
+    project = Project.find(id.to_i)
+    ProjectPhoto.create(photo: @photo, project: project )
+  end
+end
       redirect_to photos_path(@photo), notice: "¡Has subido correctamente tu photo!"
     else
       render :new
@@ -32,9 +39,13 @@ class PhotosController < ApplicationController
     @photos = Photo.includes(:categories).where(categories: { name: params[:param] })
   end
 
+  def photos_by_project
+    @photos = Photo.includes(:projects).where(projects: { title: params[:param] })
+  end
+
   private
 
   def photo_params
-    params.require(:photo).permit(:title, :description, :date, :location, :photo)
+    params.require(:photo).permit(:title, :description, :date, :location, :photo, project_ids: [])
   end
 end
