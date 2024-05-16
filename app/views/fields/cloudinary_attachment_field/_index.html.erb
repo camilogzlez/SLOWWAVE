@@ -1,0 +1,6 @@
+<!-- app/views/fields/cloudinary_attachment_field/_index.html.erb -->
+<% if field.data.present? %>
+  <%= image_tag field.data, alt: 'Cloudinary Image', style: 'width: 50px; height: auto;' %>
+<% else %>
+  No image available.
+<% end %>

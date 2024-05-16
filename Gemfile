@@ -29,6 +29,7 @@ gem 'light_gallery_rails', git: 'https://github.com/JoJoS003/light-gallery-rails
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem "administrate"
 
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]

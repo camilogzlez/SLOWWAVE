@@ -1,0 +1,10 @@
+<!-- app/views/fields/cloudinary_attachment_field/_form.html.erb -->
+<div class="field-unit field-unit--<%= field.resource.class.to_s.underscore %>-<%= field.attribute.to_s.dasherize %>">
+  <%= f.label field.attribute %>
+  <%= f.file_field field.attribute, direct_upload: true %>
+  <% if field.data.attached? %>
+    <div class="preview">
+      <%= image_tag field.data.variant(resize: "200x200"), alt: 'Cloudinary Image Preview', style: 'max-width: 200px; height: auto;' %>
+    </div>
+  <% end %>
+</div>

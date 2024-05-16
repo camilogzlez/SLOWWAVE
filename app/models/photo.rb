@@ -5,4 +5,5 @@ class Photo < ApplicationRecord
   has_many :categories, through: :category_photos
   has_many :project_photos, dependent: :destroy
   has_many :projects, through: :project_photos
+
 end
