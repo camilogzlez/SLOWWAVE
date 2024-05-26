@@ -9,7 +9,7 @@ class ProjectPhotoDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    photo: Field::BelongsTo,
+    photo: CloudinaryAttachmentField,
     position: Field::Number,
     project: Field::BelongsTo,
     created_at: Field::DateTime,

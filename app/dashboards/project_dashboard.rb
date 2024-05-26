@@ -11,6 +11,7 @@ class ProjectDashboard < Administrate::BaseDashboard
     id: Field::Number,
     description: Field::String,
     project_photos: Field::HasMany,
+    photo: CloudinaryAttachmentField,
     title: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
