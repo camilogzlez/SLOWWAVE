@@ -1,4 +1,5 @@
 require "administrate/base_dashboard"
+require "administrate/field/belongs_to"
 
 class ProjectPhotoDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -9,12 +10,14 @@ class ProjectPhotoDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    photo: CloudinaryAttachmentField,
+    # photo: Field::BelongsTo.with_options(class_name: "Photo"),
     position: Field::Number,
     project: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    photo_thumbnail_url: CloudinaryAttachmentField, # Add this line
   }.freeze
+
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -23,7 +26,7 @@ class ProjectPhotoDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    photo
+    photo_thumbnail_url
     position
     project
   ].freeze
@@ -32,7 +35,7 @@ class ProjectPhotoDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    photo
+    photo_thumbnail_url
     position
     project
     created_at
@@ -63,7 +66,7 @@ class ProjectPhotoDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how project photos are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(project_photo)
-  #   "ProjectPhoto ##{project_photo.id}"
-  # end
+  def display_resource(project_photo)
+    "ProjectPhoto ##{project_photo.id}"
+  end
 end

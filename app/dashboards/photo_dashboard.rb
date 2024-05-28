@@ -16,13 +16,15 @@ class PhotoDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo, # Add this line to define the user attribute
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    category_names: Field::String,
+    project_titles: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
   COLLECTION_ATTRIBUTES = %i[
     id
-    categories
-    category_photos
+    category_names
+    project_titles
     date
     photo
   ].freeze
@@ -30,7 +32,8 @@ class PhotoDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    categories
+    category_names
+    project_titles
     date
     description
     location

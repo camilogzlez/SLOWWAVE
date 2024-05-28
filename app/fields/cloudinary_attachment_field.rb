@@ -7,10 +7,10 @@ class CloudinaryAttachmentField < Administrate::Field::Base
   end
 
   def thumbnail
-    # Assuming `data` is the URL to the Cloudinary image
-    return unless data.present?
-
-    # You can adjust the size of the image thumbnail here
-    image_tag(data, width: 100, height: 100)
+    if data.present?
+      Cloudinary::Utils.cloudinary_url(data)
+    else
+      "no-image-available.png"
+    end
   end
 end
