@@ -2,6 +2,8 @@
   "name": "slowwave",
   "private": true,
   "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -14,8 +16,10 @@
     "popper.js": "^1.16.1",
     "select2": "^4.1.0-rc.0",
     "simplelightbox": "^2.8.0",
-    "stimulus": "^3.0.1",
-    "turbolinks": "^5.2.0"
+    "sortablejs": "^1.15.2",
+    "stimulus": "^3.2.2",
+    "turbolinks": "^5.2.0",
+    "webpack": "^5.0.0"
   },
   "version": "0.1.0",
   "devDependencies": {

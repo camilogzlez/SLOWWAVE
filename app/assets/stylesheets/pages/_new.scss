@@ -1,51 +1,59 @@
 .form-new {
-  background-color: #ebe7eba4;
-  color: #046CE7;
-  height: 910px;
-  margin-top: 20px;
+  background-color: #ffffff;
+  color: black;
+  margin-top: 20%;
   margin-bottom: 20px;
-  border-top-left-radius: 10px ;
-  border-bottom-left-radius: 10px ;
-  h4{
-    margin-top: 32px;
-    margin-left: 68px;
-    margin-bottom: 36px;
-  }
-
+  border-radius: 10px;
+  padding: 20px;
+  font-family: 'camiloFont';
+  border: 1px solid #000000;
+  font-size: 2.5rem;
 }
 
-
-.new_instructions {
-  background-color: #046CE7;
-  height: 910px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: rgb(69, 21, 212);
-  border-top-right-radius: 10px ;
-  border-bottom-right-radius: 10px ;
-
-  p{
-    margin-top: 28px;
-  }
-
-  h3{
-    margin-top: 50px;
-  }
+h1 {
+  font-family: 'camiloFont';
+  font-size: 3.5rem;
 }
 
-.style_image{
-  width: 350px;
+.style_image {
+  width: 100%;
+  max-width: 350px;
   margin-top: 48px;
 }
 
-.deadline{
-  width: 280px;
+.deadline {
+  width: 100%;
+  max-width: 280px;
 }
 
-.categorydesign{
+.categorydesign {
   margin-left: 20px;
 }
 
-.select2-container--default.select2-selection--multiple {
-  background-color: yellow !important;
+.select2-container--default{
+  width: 50% !important;
+}
+
+.form-control {
+  font-size: 2rem;
+}
+
+.btn {
+  font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+
+  .form-new,
+  .new_instructions {
+    border-radius: 10px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .deadline {
+    width: 100%;
+  }
 }

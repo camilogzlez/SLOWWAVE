@@ -41,8 +41,8 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
     initHeader();
     initScrollKeeper();
- 
-  
+
+
 });
 
 import "controllers"

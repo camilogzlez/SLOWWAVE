@@ -33,6 +33,10 @@ a {
    font-size: 1rem;
 }
 
+p {
+  line-height: 1.0;
+}
+
 body {
   position: relative;
   font: 16px/1.5 sans-serif;
@@ -56,9 +60,8 @@ body {
 
 /* MAIN RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.social{
- display: flex;
- justify-content: space-between;
+.spanmenus {
+  display: flex;
 }
 
 .trigger-menu-wrapper {
@@ -68,8 +71,6 @@ body {
   right: 0;
   display: flex;
   justify-content: space-between;
-  // align-items: center;
-  padding: 5px;
   z-index: 2;
   background: var(--lightpurple);
   transition: transform 0.4s;
@@ -79,12 +80,13 @@ body {
 .page-header .trigger-menu-categories,
 .page-header .trigger-menu-projects {
   margin-bottom: 10px;
+  margin-left: 10px;
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 3.0rem;
   color: #d1d3d4;
   letter-spacing: 0.2em;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'camiloFont';
 }
 
 .page-header .trigger-menu-categories:hover,
@@ -116,8 +118,15 @@ body {
 .page-header .menu-categories a,
 .page-header .menu-projects a {
   font-size: 1.5rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'camiloFont';
   color: #3852a4;
+}
+
+.page-header .menu-categories p,
+.page-header .menu-projects p {
+  color: #3852a4;
+  line-height: 0.5;
+  margin-bottom: 10px;
 }
 
 .page-header .sub-menu a {
@@ -198,6 +207,67 @@ body {
   // box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 }
 
-.navbar-brand img {
-  width: 40px;
+.navbar-brand {
+  display: grid;
+  margin-left: 5%;
 }
+
+.navbar-brand img {
+  max-width: 130px;
+}
+
+@media screen and (max-width: 768px) {
+//   .trigger-menu-wrapper {
+//     flex-direction: column;
+//     align-items: center;
+//     padding: 20px;
+//   }
+
+  .page-header .trigger-menu-categories,
+  .page-header .trigger-menu-projects {
+    font-size: 2rem;
+    margin: 5px;
+  }
+
+
+  // .spanmenus {
+  //   display: table-row;
+  // }
+
+  p {
+      font-size: 2rem;
+   }
+
+  .navbar-brand img {
+    width: 80%;
+    margin-top: 10%;
+  }
+
+ svg {
+   width: 9px;
+ }
+
+ .about-container {
+    margin-top: 25%;
+ }
+}
+
+
+@media screen and (max-width: 480px) {
+
+  .page-header .trigger-menu-categories,
+  .page-header .trigger-menu-projects {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+    .navbar-brand img {
+      width: 100%;
+      margin-top: 10%;
+    }
+
+            p {
+              font-size: 1.5rem;
+            }
+}
+

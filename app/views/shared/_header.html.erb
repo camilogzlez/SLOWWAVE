@@ -1,19 +1,12 @@
 <header class="page-header">
   <nav>
     <div class="trigger-menu-wrapper">
-      <div class="logo">
-        <%= link_to "#", class: "navbar-brand" do %>
-          <%= image_tag "header/logo.png", style:"width: 100%" %>
-        <% end %>
-      </div>
-
-      <div class="social">
-        <a href="https://www.instagram.com/camilogzlez/" target="_blank"><i class="fab fa-instagram"></i></a>
-      </div>
-
-      <div class="about">
-        <span>ABOUT</span>
-      </div>
+<div class="logo">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "header/logo.png"%>
+  <% end %>
+</div>
+      <div class="spanmenus">
 
        <div>
         <button class="trigger-menu-categories">
@@ -50,6 +43,7 @@
           <% end %>
         </ul>
           </div>
+    </div>
     </div>
   </nav>
 </header>
