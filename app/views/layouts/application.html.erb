@@ -18,8 +18,11 @@
     <%= render 'shared/flashes' %>
 
     <%= yield %>
-
+     <% unless controller_name == 'pages' && action_name == 'about' %>
 
      <%= render 'shared/footer' %>
+
+     <% end %>
+
   </body>
 </html>

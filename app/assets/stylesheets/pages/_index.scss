@@ -23,13 +23,14 @@ grid-auto-flow: dense;
   position: relative;
 }
 
-.gallery-item .image{
+.gallery-item .index-image{
   width: 100%;
   height: 100%;
   overflow: hidden;
+  cursor: default;
 }
 
-.gallery-item .image img{
+.gallery-item .index-image img{
   width: 100%;
   height: 100%;
   object-fit: cover;

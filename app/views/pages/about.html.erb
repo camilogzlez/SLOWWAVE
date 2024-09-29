@@ -4,8 +4,15 @@
     <p>CAMILO GONZALEZ</p>
     <p>Through my project, Slowwave, I want to share my perspective on moments, people, and nature that I'am fortunate to witness. Each image captures memories and curiosity, like riding a wave in slow motion. I hope you enjoy these visual stories.</p>
     <p>Photographer - Web Developer </p>
-    <%# <div class="social-links">
-        <a href="#" target="_blank">🔗 LinkedIn</a>
-        <a href="#" target="_blank">📷 Instagram</a>
-    </div> %>
+    <div class="about-links">
+      <%= link_to href="https://www.instagram.com/camilogzlez/", target: "_blank" do %>
+    <%= image_tag "Logo instagram.png"%>
+  <% end %>
+      <%= link_to href="https://www.linkedin.com/in/camilogzlez/", target: "_blank" do %>
+    <%= image_tag "Logo linkedin gray.png"%>
+  <% end %>
+    <%= link_to "mailto:camilogzlez@gmail.com", target: "_blank" do %>
+        <%= image_tag "logo email.png"%>
+  <% end %>
+  </div>
 </div>

@@ -26,13 +26,8 @@ body {
   width: 100%;
   height: 50%;
   overflow: hidden;
+  cursor: pointer !important;
 }
-
-// .gallery-item .image img {
-//   width: 100%;
-//   height: 50%;
-//   object-fit: cover;
-// }
 
 .modal-content {
   background-color: transparent;
@@ -60,6 +55,12 @@ body {
   margin: auto;
   /* Center the image */
   display: block;
+}
+
+.fade {
+  background-color: rgba(245, 245, 245, 0.9);
+  /* Almost white with 90% opacity */
+  transition: background-color 0.15s linear;
 }
 
 .w-1 {

@@ -129,6 +129,11 @@ body {
   margin-bottom: 10px;
 }
 
+.page-header .menu-categories p:hover,
+.page-header .menu-projects p:hover {
+  color: #d1d3d4;
+}
+
 .page-header .sub-menu a {
   font-size: 1.5rem;
 }
