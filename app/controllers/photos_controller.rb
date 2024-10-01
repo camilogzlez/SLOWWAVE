@@ -33,7 +33,7 @@ class PhotosController < ApplicationController
         end
       end
 
-      redirect_to photos_path(@photo), notice: "¡Has subido correctamente tu photo!"
+      redirect_to photos_path(@photo), notice: "¡You have correctly uploaded one photo!"
     else
       render :new
     end
@@ -41,12 +41,18 @@ class PhotosController < ApplicationController
 
   def photos_by_category
     @photos = Photo.includes(:categories).where(categories: { name: params[:param] })
+    if @photos.empty?
+         redirect_to photos_path, alert: "There are no photos yet in this category"
+    end
   end
 
   def photos_by_project
     @photos = Photo.includes(:projects)
                  .where(projects: { title: params[:param] })
                  .order('project_photos.position ASC')
+    if @photos.empty?
+         redirect_to photos_path, alert: "There are no photos yet in this project"
+    end
   end
 
   private

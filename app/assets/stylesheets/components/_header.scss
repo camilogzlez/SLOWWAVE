@@ -53,9 +53,7 @@ body {
 }
 
 .fab:hover {
-
   color: #3852a4;
-
 }
 
 /* MAIN RULES
@@ -209,7 +207,6 @@ body {
 
 .scroll-up:not(.menu-open) .trigger-menu-wrapper {
   background: var(--lightpurple);
-  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 }
 
 .navbar-brand {
@@ -234,13 +231,12 @@ body {
     margin: 5px;
   }
 
-
   // .spanmenus {
   //   display: table-row;
   // }
 
   p {
-      font-size: 2rem;
+     font-size: 2rem;
    }
 
   .navbar-brand img {
@@ -266,13 +262,12 @@ body {
     margin-bottom: 5px;
   }
 
-    .navbar-brand img {
-      width: 100%;
-      margin-top: 10%;
+  .navbar-brand img {
+    width: 100%;
+    margin-top: 10%;
+  }
+
+  p {
+    font-size: 1.5rem;
     }
-
-            p {
-              font-size: 1.5rem;
-            }
 }
-

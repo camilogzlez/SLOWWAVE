@@ -20,5 +20,5 @@ class PhotosTest < ApplicationSystemTestCase
 
     assert_equal root_path, page.current_path
     assert_text "Brazil"
-  end 
+  end
 end

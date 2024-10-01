@@ -1,7 +1,6 @@
 require "administrate/base_dashboard"
 
 class PhotoDashboard < Administrate::BaseDashboard
-  # ATTRIBUTE_TYPES
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     categories: Field::HasMany,
