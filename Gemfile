@@ -38,6 +38,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem "acts_as_list", "~> 1.1"
 gem 'stimulus-rails'
+gem 'uglifier'
+
 
 group :development, :test do
   gem 'pry-byebug'
@@ -74,3 +76,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "aws-sdk-s3", "~> 1.167", :require => false
