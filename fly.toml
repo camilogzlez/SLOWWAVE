@@ -9,13 +9,19 @@ console_command = '/rails/bin/rails console'
 
 [build]
 
-[http_service]
+[[services]]
   internal_port = 3000
-  force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+  internal_address = "0.0.0.0"
+  protocol = "tcp"
+
+[[services.http_checks]]
+  path = "/"
+  method = "get"
+  interval = "15s" # Increased to allow more time between checks
+  timeout = "5s"  # Increased to allow more response time
+  grace_period = "10s"
+  protocol = "http"
+  restart_limit = 0
 
 [[vm]]
   memory = '1gb'
