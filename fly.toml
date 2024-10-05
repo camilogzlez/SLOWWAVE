@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for slowwave on 2024-10-03T16:49:57+02:00
+# fly.toml app configuration file generated for slowwave on 2024-10-05T19:59:41+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -9,22 +9,15 @@ console_command = '/rails/bin/rails console'
 
 [build]
 
-[[services]]
+[http_service]
   internal_port = 3000
-  internal_address = "0.0.0.0"
-  protocol = "tcp"
-
-[[services.http_checks]]
-  path = "/"
-  method = "get"
-  interval = "15s" # Increased to allow more time between checks
-  timeout = "5s"  # Increased to allow more response time
-  grace_period = "10s"
-  protocol = "http"
-  restart_limit = 0
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-
