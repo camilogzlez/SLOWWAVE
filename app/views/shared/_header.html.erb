@@ -1,49 +1,65 @@
 <header class="page-header">
   <nav>
     <div class="trigger-menu-wrapper">
-<div class="logo">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "header/logo.png"%>
-  <% end %>
-</div>
+      <div class="logo">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "header/logo.png" %>
+        <% end %>
+      </div>
       <div class="spanmenus">
 
-       <div>
-        <button class="trigger-menu-categories">
+        <!-- CATEGORIES MENU -->
+        <div>
+          <button class="trigger-menu-categories">
             <svg width="12" height="12" viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
             </svg>
             <span>CATEGORIES</span>
-        </button>
-        <ul class="menu-categories menu">
-          <% Category.all.each do |category| %>
-            <li>
-              <%= link_to photos_by_category_path(param:category.name) do  %>
-                <p><%= category.name %></p>
+          </button>
+          <ul class="menu-categories menu">
+            <% if Category.exists? %> <!-- Check if categories exist -->
+              <% Category.all.each do |category| %>
+                <li>
+                  <%= link_to photos_by_category_path(param: category.name) do %>
+                    <p><%= category.name %></p>
+                  <% end %>
+                </li>
               <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+            <% else %> <!-- Display message if no categories exist -->
+              <li>
+                <p>No categories available</p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
 
-      <div>
-        <button class="trigger-menu-projects">
+        <!-- PROJECTS MENU -->
+        <div>
+          <button class="trigger-menu-projects">
             <svg width="12" height="12" viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
             </svg>
             <span>PROJECTS</span>
-        </button>
-        <ul class="menu-projects menu">
-          <% Project.all.each do |project| %>
-            <li>
-              <%= link_to photos_by_project_path(param:project.title) do  %>
-                <p><%= project.title %></p>
+          </button>
+          <ul class="menu-projects menu">
+            <% if Project.exists? %> <!-- Check if projects exist -->
+              <% Project.all.each do |project| %>
+                <li>
+                  <%= link_to photos_by_project_path(param: project.title) do %>
+                    <p><%= project.title %></p>
+                  <% end %>
+                </li>
               <% end %>
-            </li>
-          <% end %>
-        </ul>
-          </div>
-    </div>
+            <% else %> <!-- Display message if no projects exist -->
+              <li>
+                <p>No projects available</p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </nav>
 </header>
+
