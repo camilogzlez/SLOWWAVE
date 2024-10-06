@@ -24,6 +24,7 @@ gem 'redis', '~> 4.0'
 gem 'jquery-rails'
 gem 'light_gallery_rails', git: 'https://github.com/JoJoS003/light-gallery-rails.git'
 
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
