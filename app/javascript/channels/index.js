@@ -1,5 +1,8 @@
-// Load all the channels within this directory and all subdirectories.
-// Channel files must be named *_channel.js.
+const channels = import.meta.glob("./*_channel.js", { eager: true });
 
-const channels = require.context('.', true, /_channel\.js$/)
-channels.keys().forEach(channels)
+// Loop through and execute each channel module
+Object.values(channels).forEach((module) => {
+  if (typeof module.default === "function") {
+    module.default();
+  }
+});

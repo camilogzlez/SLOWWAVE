@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SLOWWAVE</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>SLOWWAVE</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+  <!-- Include the correct Vite JavaScript file -->
+  <%= vite_client_tag %> <!-- Vite's client-side HMR -->
+  <%= vite_javascript_tag 'application' %> <!-- Correctly reference the Vite entrypoint -->
 
-  </head>
+</head>
 
-  <body>
-    <%= render 'shared/header' %>
-    <%= render 'shared/flashes' %>
+<body>
+<%= render 'shared/header' %>
+<%= render 'shared/flashes' %>
 
-    <%= yield %>
-     <% unless controller_name == 'pages' && action_name == 'about' %>
+<%= yield %>
 
-     <%= render 'shared/footer' %>
+<% unless controller_name == 'pages' && action_name == 'about' %>
+  <%= render 'shared/footer' %>
+<% end %>
 
-     <% end %>
-
-  </body>
+</body>
 </html>

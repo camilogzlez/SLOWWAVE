@@ -1,40 +1,42 @@
+const scrollState = {}; // Local state to store scroll position
+
 const initScrollKeeper = () => {
   prepareAnchorFormElements();
   prepareAnchorLinkElements();
 };
 
 const setScroll = () => {
-  if (Turbolinks.scroll["top"]) {
-    document.scrollingElement.scrollTo(0, Turbolinks.scroll["top"]);
+  if (scrollState["top"]) {
+    document.scrollingElement.scrollTo(0, scrollState["top"]);
   }
 
-  Turbolinks.scroll = {};
+  scrollState["top"] = undefined; // Reset after scroll is restored
 };
 
 const prepareAnchorFormElements = () => {
   const anchorFormElements = document.querySelectorAll(".anchor-form");
 
-  if (anchorFormElements) {
+  if (anchorFormElements.length > 0) {
     anchorFormElements.forEach((element) => {
       element.addEventListener("submit", () => {
-        Turbolinks.scroll["top"] = document.scrollingElement.scrollTop;
+        scrollState["top"] = document.scrollingElement.scrollTop;
       });
     });
     setScroll();
-  };
+  }
 };
 
 const prepareAnchorLinkElements = () => {
   const anchorLinkElements = document.querySelectorAll(".anchor-link");
 
-  if (anchorLinkElements) {
+  if (anchorLinkElements.length > 0) {
     anchorLinkElements.forEach((element) => {
       element.addEventListener("click", () => {
-        Turbolinks.scroll["top"] = document.scrollingElement.scrollTop;
+        scrollState["top"] = document.scrollingElement.scrollTop;
       });
     });
     setScroll();
-  };
+  }
 };
 
 export { initScrollKeeper };

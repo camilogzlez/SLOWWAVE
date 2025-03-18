@@ -12,7 +12,8 @@ gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.4', '>= 5.4.4'
+# gem 'webpacker', '6.0.0.rc.6'
+gem 'vite_rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -23,7 +24,7 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'light_gallery_rails', git: 'https://github.com/JoJoS003/light-gallery-rails.git'
-
+gem 'bootstrap', '~> 5.0.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -42,7 +43,6 @@ gem 'stimulus-rails'
 gem 'uglifier'
 gem 'cloudinary'
 gem 'activestorage-cloudinary-service'
-
 
 group :development, :test do
   gem 'pry-byebug'
@@ -79,7 +79,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem "dockerfile-rails", ">= 1.6", group: :development
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
-
-gem "aws-sdk-s3", "~> 1.167", :require => false
+gem "aws-sdk-s3", "~> 1.167", require: false
