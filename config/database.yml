@@ -81,8 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: SLOWWAVE_production
-  username: camilogzlez
-  password: <%= ENV['SLOWWAVE_DATABASE_PASSWORD'] %>
-  host: localhost
-  port: 5432
+  url: <%= ENV['DATABASE_URL'] %>
