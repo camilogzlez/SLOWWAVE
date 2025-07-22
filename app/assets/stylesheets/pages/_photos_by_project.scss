@@ -38,6 +38,17 @@ body {
   border: 15px solid white;
 }
 
+.carousel-photo-caption {
+  color: #222;
+  display: inline-block;
+  padding: 0.1em 1em 0.5em 1em;  /* top, right, bottom, left padding */
+  border-radius: 0.5em;
+}
+
+.modal-content {
+  padding-bottom: 1rem;  /* Ensure there's space at the bottom of the modal */
+}
+
 .w-1 {
   grid-column: span 1;
 }
@@ -103,4 +114,9 @@ body {
 .col-12 img:hover {
   opacity: 1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+::marker {
+  display: none! important;
+  content: none! important;
 }

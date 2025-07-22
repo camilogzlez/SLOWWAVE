@@ -20,9 +20,6 @@
   <div class="modal fade" id="lightbox" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <button type="button" class="close text-right p-2" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
         <div  id="indicators" data-ride="carousel" class="carousel slide">
           <ol class="carousel-indicators">
             <% @photos.each_with_index do |photo, n| %>
@@ -32,6 +29,8 @@
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
               <img class="d-block w-100" src="<%= cl_image_path @photos.first.photo.key %>">
+                <p class="carousel-photo-caption text-center mt-1">
+               <%= @photos.first.description %> </p>
               </div>
             <% @photos.drop(1).each do |photo| %>
               <div class="carousel-item">
@@ -52,3 +51,18 @@
       </div>
     </div>
   </div>
+
+<!-- Include jQuery and Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // Ensure the modal opens when an image is clicked
+    $('.image').on('click', function() {
+      var slideTo = $(this).data('slide-to');
+      $('#lightbox').modal('show');
+      $('#indicators').carousel(slideTo);
+    });
+  });
+</script>

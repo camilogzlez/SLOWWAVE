@@ -33,6 +33,7 @@ body {
   background-color: transparent;
   border: none;
   width: auto !important;
+  padding-bottom: 1rem; 
 }
 
 .modal-dialog {
@@ -55,6 +56,13 @@ body {
   margin: auto;
   /* Center the image */
   display: block;
+}
+
+.carousel-photo-caption {
+  color: #222;
+  display: inline-block;
+  padding: 0.1em 1em 0.5em 1em;  /* top, right, bottom, left padding */
+  border-radius: 0.5em;
 }
 
 .fade {
@@ -131,4 +139,9 @@ body {
 .col-12 img:hover {
   opacity: 1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+::marker {
+  display: none! important;
+  content: none! important;
 }

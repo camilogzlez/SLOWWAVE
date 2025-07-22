@@ -14,9 +14,6 @@
 <div class="modal fade" id="lightbox" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <button type="button" class="close text-right p-2" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
       <div id="indicators" data-ride="carousel" class="carousel slide">
         <ol class="carousel-indicators">
           <% @photos.each_with_index do |photo, n| %>
@@ -27,6 +24,8 @@
           <div class="carousel-item active">
             <img class="d-block w-100 carousel-photo"
              src="<%= cl_image_path @photos.first.photo.key %>">
+             <p class="carousel-photo-caption text-center mt-1">
+               <%= @photos.first.description %> </p>
           </div>
           <% @photos.drop(1).each do |photo| %>
             <div class="carousel-item">
