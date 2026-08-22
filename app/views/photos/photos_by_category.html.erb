@@ -4,7 +4,7 @@
 
       <div class="gallery-item">
         <div class="image" data-toggle="modal" data-target="#lightbox">
-        <img src="<%= cl_image_path photo.photo.key %>" data-target = "#indicators" data-slide-to = "<%= n %>"/>
+        <img src="<%= cl_image_path photo.photo.key, width: 600, height: 600, crop: :fill, quality: :auto, fetch_format: :auto %>" data-target = "#indicators" data-slide-to = "<%= n %>"/>
           </div>
 
 

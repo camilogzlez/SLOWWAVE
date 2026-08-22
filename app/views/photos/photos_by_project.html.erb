@@ -3,7 +3,7 @@
     <div class="gallery-container w-3 h-2">
       <div class="gallery-item">
         <div class="image" data-toggle="modal" data-target="#lightbox" data-slide-to="<%= n %>">
-          <img src="<%= cl_image_path photo.photo.key %>" />
+          <img src="<%= cl_image_path photo.photo.key, width: 600, height: 600, crop: :fill, quality: :auto, fetch_format: :auto %>" />
         </div>
       </div>
     </div>
