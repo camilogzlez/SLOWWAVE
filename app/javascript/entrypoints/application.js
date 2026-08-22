@@ -26,8 +26,11 @@ const application = Application.start();
 const controllers = import.meta.glob("../controllers/*.js", { eager: true });
 registerControllers(application, controllers);
 
-// Initialize functions on DOM load
-document.addEventListener("DOMContentLoaded", () => {
+// Initialize functions on every page visit. Turbolinks swaps in a new <body>
+// on navigation without firing DOMContentLoaded again, so listeners bound
+// only on DOMContentLoaded (e.g. the navbar menu toggles) stop working after
+// the first click-through. turbolinks:load fires on the initial load too.
+document.addEventListener("turbolinks:load", () => {
     initSelect2();
     initHeader();
     initScrollKeeper();

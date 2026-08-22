@@ -1,4 +1,10 @@
 
+// initHeader() reruns on every Turbolinks visit (see application.js), but
+// `window` itself persists across visits while `body` and its children get
+// replaced. Keep the scroll listener a singleton so it isn't re-added (with
+// a stale, detached `body`/`lottiePlayer`) on every navigation.
+let scrollHandler = null;
+
 const initHeader = () => {
 
 const body = document.body;
@@ -19,7 +25,11 @@ let lastScroll = 0;
     body.classList.remove("menu-open-categories"); // Close categories menu// Ensure the other SVG is closed
   });
 
-window.addEventListener("scroll", () => {
+if (scrollHandler) {
+  window.removeEventListener("scroll", scrollHandler);
+}
+
+scrollHandler = () => {
   const currentScroll = window.pageYOffset;
   if (currentScroll <= 0) {
     body.classList.remove(scrollUp);
@@ -41,7 +51,9 @@ window.addEventListener("scroll", () => {
     lottiePlayer.stop();
   }
   lastScroll = currentScroll;
-});
+};
+
+window.addEventListener("scroll", scrollHandler);
 
 }
 
