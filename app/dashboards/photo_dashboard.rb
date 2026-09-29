@@ -4,12 +4,10 @@ class PhotoDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     categories: Field::HasMany,
-    category_photos: Field::HasMany,
     date: Field::DateTime,
     description: Field::Text,
     location: Field::String,
     photo: CloudinaryAttachmentField,
-    project_photos: Field::HasMany,
     projects: Field::HasMany,
     title: Field::String,
     user: Field::BelongsTo, # Add this line to define the user attribute
@@ -17,6 +15,7 @@ class PhotoDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     category_names: Field::String,
     project_titles: Field::String,
+    subcategory_names: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -32,6 +31,7 @@ class PhotoDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     category_names
+    subcategory_names
     project_titles
     date
     description

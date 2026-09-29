@@ -1,0 +1,12 @@
+<div class="subcategory-picker">
+  <% @subcategories.each do |subcategory| %>
+    <%= link_to photos_by_subcategory_path(subcategory), class: "subcategory-card" do %>
+      <div class="subcategory-card-image">
+        <% if subcategory.cover_photo&.photo&.attached? %>
+          <img src="<%= cl_image_path subcategory.cover_photo.photo.key, width: 600, height: 600, crop: :fill, quality: :auto, fetch_format: :auto %>" alt="<%= subcategory.name %>">
+        <% end %>
+      </div>
+      <p class="subcategory-card-name"><%= subcategory.name %></p>
+    <% end %>
+  <% end %>
+</div>

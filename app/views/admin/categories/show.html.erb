@@ -1,0 +1,41 @@
+<% content_for(:title) { @category.name } %>
+
+<header class="main-content__header">
+  <h1 class="main-content__page-title">
+    <%= content_for(:title) %>
+  </h1>
+
+  <div>
+    <%= link_to "Back to categories", admin_categories_path, class: "button" %>
+    <%= link_to "Edit", edit_admin_category_path(@category), class: "button" %>
+    <%= link_to "Destroy", [:admin, @category], method: :delete, class: "button button--danger", data: { confirm: "Are you sure?" } %>
+  </div>
+</header>
+
+<section class="main-content__body">
+  <% if @subcategories.any? %>
+    <h2>Subcategories</h2>
+    <div class="sortable-grid" data-reorder-url="<%= reorder_subcategories_admin_category_path(@category) %>">
+      <% @subcategories.each do |subcategory| %>
+        <div class="sortable-item" draggable="true" data-id="<%= subcategory.id %>">
+          <%= render "admin/shared/subcategory_card", subcategory: subcategory %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <h2>Photos directly in this category</h2>
+  <div class="sortable-grid" data-reorder-url="<%= reorder_photos_admin_category_path(@category) %>">
+    <% @category_photos.each do |category_photo| %>
+      <div class="sortable-item" draggable="true" data-id="<%= category_photo.id %>">
+        <%= render "admin/shared/photo_card", photo: category_photo.photo, all_categories: @all_categories, all_projects: @all_projects, draggable: true %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<% content_for(:javascript) do %>
+  <%= javascript_include_tag "admin/sortable_grid" %>
+  <%= javascript_include_tag "admin/photo_card" %>
+  <%= javascript_include_tag "admin/subcategory_card" %>
+<% end %>

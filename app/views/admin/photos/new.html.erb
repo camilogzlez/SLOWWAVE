@@ -1,0 +1,49 @@
+<% content_for(:title, "Upload photos") %>
+
+<div class="main-content__body">
+  <h1>Upload photos</h1>
+  <p>Pick one file or many. The metadata below (all optional except the files) is applied to every photo in the batch; each photo's title defaults to its filename and everything stays individually editable afterward from its card.</p>
+
+  <%= form_tag admin_photos_path, multipart: true do %>
+    <fieldset>
+      <legend>Shared metadata</legend>
+
+      <div class="field-unit">
+        <%= label_tag "shared_category_id", "Category" %>
+        <%= collection_select :shared, :category_id, @categories, :id, :name, include_blank: true %>
+      </div>
+
+      <div class="field-unit">
+        <%= label_tag "shared_subcategory_id", "Subcategory" %>
+        <%= collection_select :shared, :subcategory_id, @subcategories, :id, ->(s) { "#{s.category.name} / #{s.name}" }, include_blank: true %>
+      </div>
+
+      <div class="field-unit">
+        <%= label_tag "shared_project_id", "Project" %>
+        <%= collection_select :shared, :project_id, @projects, :id, :title, include_blank: true %>
+      </div>
+
+      <div class="field-unit">
+        <%= label_tag "shared_location", "Location" %>
+        <%= text_field_tag "shared[location]" %>
+      </div>
+
+      <div class="field-unit">
+        <%= label_tag "shared_date", "Date" %>
+        <%= date_field_tag "shared[date]" %>
+      </div>
+
+      <div class="field-unit">
+        <%= label_tag "shared_description", "Description" %>
+        <%= text_area_tag "shared[description]" %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Files</legend>
+      <%= file_field_tag "files[]", multiple: true, accept: "image/*", required: true %>
+    </fieldset>
+
+    <%= submit_tag "Upload photos" %>
+  <% end %>
+</div>

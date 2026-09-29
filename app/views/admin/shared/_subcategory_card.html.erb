@@ -1,0 +1,28 @@
+<%#
+  Small self-saving card for a subcategory, used on its parent Category's show page.
+
+  Locals:
+  - subcategory: the Subcategory record
+%>
+<div class="subcategory-card" data-subcategory-id="<%= subcategory.id %>" data-update-url="<%= quick_update_admin_subcategory_path(subcategory) %>">
+  <div class="photo-card-media">
+    <% if subcategory.cover_photo&.photo&.attached? %>
+      <img class="photo-card-thumb" src="<%= subcategory.cover_photo.thumbnail_url(width: 320, height: 320) %>" alt="<%= subcategory.name %>" draggable="false">
+    <% else %>
+      <div class="photo-card-thumb photo-card-thumb--empty"></div>
+    <% end %>
+
+    <span class="drag-handle" title="Drag anywhere on the card to reorder"><%= svg_icon(:drag) %></span>
+
+    <div class="photo-card-actions">
+      <%= link_to svg_icon(:edit), edit_admin_subcategory_path(subcategory), class: "icon-btn icon-btn--edit", title: "Edit" %>
+      <%= link_to svg_icon(:destroy), [:admin, subcategory], method: :delete, data: { confirm: "Are you sure? This removes all photo taggings for this subcategory." }, class: "icon-btn icon-btn--destroy", title: "Destroy" %>
+    </div>
+  </div>
+
+  <div class="photo-card-body">
+    <%= link_to subcategory.name, admin_subcategory_path(subcategory), class: "subcategory-card-link" %>
+    <input type="text" class="sc-name pc-title-input" value="<%= subcategory.name %>">
+    <span class="save-status" aria-live="polite"></span>
+  </div>
+</div>

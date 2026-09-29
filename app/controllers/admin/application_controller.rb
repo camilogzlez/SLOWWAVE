@@ -6,6 +6,10 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    # Administrate is an isolated engine, so it doesn't auto-include the host
+    # app's ApplicationHelper (e.g. svg_icon) the way normal controllers do.
+    helper ApplicationHelper
+
     before_action :authenticate_user!
 
     def authenticate_admin

@@ -13,7 +13,7 @@ Photo.destroy_all
 Category.destroy_all
 Project.destroy_all
 
-camilo = User.create!(email: "camilogzlez@gmail.com", password: "lala")
+camilo = User.create!(email: "camilogzlez@gmail.com", password: "lala123")
 camilo.save!
 
 puts "Creando user"
