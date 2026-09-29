@@ -1,0 +1,30 @@
+<% content_for(:title) { @project.title } %>
+
+<header class="main-content__header">
+  <h1 class="main-content__page-title">
+    <%= content_for(:title) %>
+  </h1>
+
+  <div>
+    <%= link_to "Back to projects", admin_projects_path, class: "button" %>
+    <%= link_to "Edit", edit_admin_project_path(@project), class: "button" %>
+    <%= link_to "Destroy", [:admin, @project], method: :delete, class: "button button--danger", data: { confirm: "Are you sure?" } %>
+  </div>
+</header>
+
+<section class="main-content__body">
+  <p><%= @project.description %></p>
+
+  <div class="sortable-grid" data-reorder-url="<%= reorder_photos_admin_project_path(@project) %>">
+    <% @project_photos.each do |project_photo| %>
+      <div class="sortable-item" draggable="true" data-id="<%= project_photo.id %>">
+        <%= render "admin/shared/photo_card", photo: project_photo.photo, all_categories: @all_categories, all_projects: @all_projects, draggable: true %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<% content_for(:javascript) do %>
+  <%= javascript_include_tag "admin/sortable_grid" %>
+  <%= javascript_include_tag "admin/photo_card" %>
+<% end %>

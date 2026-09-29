@@ -3,6 +3,11 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def show
+    @category = Category.find(params[:id])
+    @subcategories = @category.subcategories
+  end
+
   def new
     @category = Category.new
   end

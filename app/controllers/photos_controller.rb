@@ -40,7 +40,9 @@ class PhotosController < ApplicationController
   end
 
   def photos_by_category
-    @photos = Photo.includes(:categories).where(categories: { name: params[:param] })
+    @photos = Photo.includes(:categories)
+                 .where(categories: { name: params[:param] })
+                 .order('category_photos.position ASC')
     if @photos.empty?
          redirect_to photos_path, alert: "There are no photos yet in this category"
     end
@@ -52,6 +54,14 @@ class PhotosController < ApplicationController
                  .order('project_photos.position ASC')
     if @photos.empty?
          redirect_to photos_path, alert: "There are no photos yet in this project"
+    end
+  end
+
+  def photos_by_subcategory
+    @subcategory = Subcategory.find(params[:id])
+    @photos = @subcategory.photos.order('category_photos.position ASC')
+    if @photos.empty?
+         redirect_to photos_path, alert: "There are no photos yet in this subcategory"
     end
   end
 

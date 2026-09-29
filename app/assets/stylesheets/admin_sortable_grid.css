@@ -1,0 +1,326 @@
+/* Several rules below set an explicit `display` on elements that are also
+   toggled via the native [hidden] attribute; an author `display` rule beats
+   the UA's `[hidden] { display: none }` at equal specificity, so without this
+   reset a "hidden" field would still render. */
+[hidden] {
+  display: none !important;
+}
+
+.sortable-grid,
+.photo-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.sortable-item {
+  position: relative;
+  cursor: grab;
+}
+
+.sortable-item:active {
+  cursor: grabbing;
+}
+
+/* --- card shell --- */
+
+.photo-card,
+.subcategory-card {
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(20, 20, 20, 0.05);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.photo-card:hover,
+.subcategory-card:hover {
+  box-shadow: 0 6px 16px rgba(20, 20, 20, 0.1);
+  transform: translateY(-2px);
+}
+
+.photo-card-media {
+  position: relative;
+  background: #f0f0f0;
+}
+
+.photo-card-thumb {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.photo-card-thumb--empty {
+  height: 190px;
+  background: repeating-linear-gradient(45deg, #f2f2f2, #f2f2f2 10px, #e9e9e9 10px, #e9e9e9 20px);
+}
+
+.photo-card-body {
+  padding: 6px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* --- overlay controls on the image --- */
+
+.drag-handle {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  cursor: grab;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 6px;
+  color: #555;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.photo-card-actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  display: flex;
+  gap: 6px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.icon-btn--edit {
+  color: #2563eb;
+}
+
+.icon-btn--edit:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+.icon-btn--destroy {
+  color: #dc2626;
+}
+
+.icon-btn--destroy:hover {
+  background: #dc2626;
+  color: #fff;
+}
+
+/* --- title / editable fields --- */
+
+.pc-title-input {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 3px 5px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #888;
+  width: 100%;
+  font-family: inherit;
+}
+
+.pc-title-input:hover {
+  border-color: #ddd;
+}
+
+.pc-title-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.subcategory-card-link {
+  font-size: 0.8rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.pc-meta-row {
+  display: flex;
+  gap: 10px;
+}
+
+.pc-meta-row .pc-collapsible {
+  flex: 1;
+  min-width: 0;
+}
+
+.pc-collapsible {
+  display: flex;
+  flex-direction: column;
+}
+
+.pc-toggle-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: #aaa;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1;
+  padding: 1px 0;
+  cursor: pointer;
+}
+
+.pc-toggle-btn svg {
+  width: 10px;
+  height: 10px;
+}
+
+.pc-toggle-btn:hover {
+  background: none;
+  color: #2563eb;
+}
+
+.pc-filled-dot {
+  color: #2563eb;
+  font-size: 0.6rem;
+  margin-left: 2px;
+}
+
+.photo-card-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.photo-card-field-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #999;
+}
+
+.photo-card-field input,
+.photo-card-field textarea {
+  font-size: 0.85rem;
+  color: #333;
+  padding: 5px 7px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.photo-card-field input:focus,
+.photo-card-field textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* --- category / project chip lists --- */
+
+.photo-card-fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 4px 14px;
+  border: none;
+  background: #f7f7f8;
+  border-radius: 6px;
+  padding: 5px 8px;
+  max-height: 90px;
+  overflow-y: auto;
+}
+
+.photo-card-fieldset legend {
+  flex-basis: 100%;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #999;
+  padding: 0;
+}
+
+.pc-category-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.pc-chip-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #333;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.pc-chip-label input[type="checkbox"] {
+  accent-color: #2563eb;
+}
+
+.pc-subcategory-select {
+  margin: 3px 0 3px 22px;
+  font-size: 0.78rem;
+  padding: 2px 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-width: calc(100% - 22px);
+  width: auto;
+}
+
+/* --- save status --- */
+
+.save-status {
+  font-size: 0.72rem;
+  color: #16a34a;
+  min-height: 1em;
+}
+
+.save-status--error {
+  color: #dc2626;
+}
+
+/* --- nav --- */
+
+.navigation__link--nested {
+  padding-left: 1.8em;
+  font-size: 0.92em;
+  color: #666;
+}
+
+.navigation__link--upload {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1.2em;
+  padding-top: 0.8em;
+  border-top: 1px solid #e6e6e6;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.navigation__link--upload svg {
+  flex-shrink: 0;
+}

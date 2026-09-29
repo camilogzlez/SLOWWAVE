@@ -10,7 +10,6 @@ class ProjectDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     description: Field::String,
-    project_photos: Field::HasMany,
     title: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -24,7 +23,6 @@ class ProjectDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     description
-    project_photos
     title
   ].freeze
 
@@ -33,7 +31,6 @@ class ProjectDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     description
-    project_photos
     title
     created_at
     updated_at
@@ -44,7 +41,6 @@ class ProjectDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     description
-    project_photos
     title
   ].freeze
 

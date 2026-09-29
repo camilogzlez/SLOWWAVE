@@ -21,16 +21,10 @@
           <% end %>
         </ol>
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active">
-            <img class="d-block w-100 carousel-photo"
-             src="<%= cl_image_path @photos.first.photo.key %>">
-             <p class="carousel-photo-caption text-center mt-1">
-               <%= @photos.first.description %> </p>
-          </div>
-          <% @photos.drop(1).each do |photo| %>
-            <div class="carousel-item">
-              <img class="d-block w-100 carousel-photo"
-               src="<%= cl_image_path photo.photo.key %>">
+          <% @photos.each_with_index do |photo, n| %>
+            <div class="carousel-item <%= 'active' if n == 0 %>">
+              <img class="d-block w-100 carousel-photo" src="<%= cl_image_path photo.photo.key %>">
+              <p class="carousel-photo-caption text-center mt-1"><%= photo.description %></p>
             </div>
           <% end %>
         </div>

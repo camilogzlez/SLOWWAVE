@@ -1,0 +1,28 @@
+<% content_for(:title) { "#{@subcategory.category.name} / #{@subcategory.name}" } %>
+
+<header class="main-content__header">
+  <h1 class="main-content__page-title">
+    <%= content_for(:title) %>
+  </h1>
+
+  <div>
+    <%= link_to "Back to category", admin_category_path(@subcategory.category), class: "button" %>
+    <%= link_to "Edit", edit_admin_subcategory_path(@subcategory), class: "button" %>
+    <%= link_to "Destroy", [:admin, @subcategory], method: :delete, class: "button button--danger", data: { confirm: "Are you sure?" } %>
+  </div>
+</header>
+
+<section class="main-content__body">
+  <div class="sortable-grid" data-reorder-url="<%= reorder_photos_admin_subcategory_path(@subcategory) %>">
+    <% @category_photos.each do |category_photo| %>
+      <div class="sortable-item" draggable="true" data-id="<%= category_photo.id %>">
+        <%= render "admin/shared/photo_card", photo: category_photo.photo, all_categories: @all_categories, all_projects: @all_projects, draggable: true %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<% content_for(:javascript) do %>
+  <%= javascript_include_tag "admin/sortable_grid" %>
+  <%= javascript_include_tag "admin/photo_card" %>
+<% end %>

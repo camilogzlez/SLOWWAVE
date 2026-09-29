@@ -1,0 +1,90 @@
+<%#
+  Reusable, self-saving photo card used on the global admin Photos index and
+  on the Project/Category/Subcategory show pages.
+
+  Locals:
+  - photo: the Photo record
+  - all_categories: Category.includes(:subcategories).order(:name) (preloaded once per page)
+  - all_projects: Project.order(:title) (preloaded once per page)
+  - draggable: whether to render a drag handle (only true when the card sits
+    inside a `.sortable-item` wrapper with a real position to drag)
+%>
+<% draggable = local_assigns.fetch(:draggable, false) %>
+<% current_category_ids = photo.category_photos.map(&:category_id) %>
+<% current_subcategory_by_category = photo.category_photos.each_with_object({}) { |cp, h| h[cp.category_id] = cp.subcategory_id if cp.subcategory_id } %>
+<% current_project_ids = photo.project_ids %>
+
+<div class="photo-card" data-photo-id="<%= photo.id %>" data-update-url="<%= quick_update_admin_photo_path(photo) %>">
+  <div class="photo-card-media">
+    <img class="photo-card-thumb" src="<%= photo.thumbnail_url(width: 320, height: 320) %>" alt="<%= photo.title %>" draggable="false">
+
+    <% if draggable %>
+      <span class="drag-handle" title="Drag anywhere on the card to reorder"><%= svg_icon(:drag) %></span>
+    <% end %>
+
+    <div class="photo-card-actions">
+      <%= link_to svg_icon(:edit), edit_admin_photo_path(photo), class: "icon-btn icon-btn--edit", title: "Edit" %>
+      <%= link_to svg_icon(:destroy), [:admin, photo], method: :delete, data: { confirm: "Are you sure?" }, class: "icon-btn icon-btn--destroy", title: "Destroy" %>
+    </div>
+  </div>
+
+  <div class="photo-card-body">
+    <input type="text" class="pc-title pc-title-input" value="<%= photo.title %>" placeholder="Untitled">
+
+    <div class="pc-meta-row">
+      <div class="pc-collapsible" data-field="description">
+        <button type="button" class="pc-toggle-btn"><%= svg_icon(:add) %> Description<% if photo.description.present? %><span class="pc-filled-dot">●</span><% end %></button>
+        <label class="photo-card-field pc-collapsible-field" hidden>
+          <span class="photo-card-field-label">Description</span>
+          <textarea class="pc-description" rows="2"><%= photo.description %></textarea>
+        </label>
+      </div>
+
+      <div class="pc-collapsible" data-field="location">
+        <button type="button" class="pc-toggle-btn"><%= svg_icon(:add) %> Location<% if photo.location.present? %><span class="pc-filled-dot">●</span><% end %></button>
+        <label class="photo-card-field pc-collapsible-field" hidden>
+          <span class="photo-card-field-label">Location</span>
+          <input type="text" class="pc-location" value="<%= photo.location %>">
+        </label>
+      </div>
+    </div>
+
+    <fieldset class="photo-card-fieldset pc-categories">
+      <legend>Categories</legend>
+      <% all_categories.each do |category| %>
+        <div class="pc-category-row">
+          <label class="pc-chip-label">
+            <input type="checkbox" class="pc-category-checkbox" value="<%= category.id %>"
+              <%= "checked" if current_category_ids.include?(category.id) %>>
+            <span><%= category.name %></span>
+          </label>
+          <% if category.subcategories.any? %>
+            <select class="pc-subcategory-select" data-category-id="<%= category.id %>"
+              <%= "hidden" unless current_category_ids.include?(category.id) %>>
+              <option value="">(no subcategory)</option>
+              <% category.subcategories.each do |subcategory| %>
+                <option value="<%= subcategory.id %>"
+                  <%= "selected" if current_subcategory_by_category[category.id] == subcategory.id %>>
+                  <%= subcategory.name %>
+                </option>
+              <% end %>
+            </select>
+          <% end %>
+        </div>
+      <% end %>
+    </fieldset>
+
+    <fieldset class="photo-card-fieldset pc-projects">
+      <legend>Projects</legend>
+      <% all_projects.each do |project| %>
+        <label class="pc-chip-label">
+          <input type="checkbox" class="pc-project-checkbox" value="<%= project.id %>"
+            <%= "checked" if current_project_ids.include?(project.id) %>>
+          <span><%= project.title %></span>
+        </label>
+      <% end %>
+    </fieldset>
+
+    <span class="save-status" aria-live="polite"></span>
+  </div>
+</div>

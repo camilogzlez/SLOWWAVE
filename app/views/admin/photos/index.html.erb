@@ -1,0 +1,19 @@
+<%=
+  render("index_header",
+    resources: resources,
+    search_term: search_term,
+    page: page,
+    show_search_bar: show_search_bar,
+  )
+%>
+
+<section class="main-content__body">
+  <div class="photo-card-grid">
+    <%= render partial: "admin/shared/photo_card", collection: resources, as: :photo,
+        locals: { all_categories: @all_categories, all_projects: @all_projects } %>
+  </div>
+
+  <%= render("pagination", resources: resources) %>
+</section>
+
+<% content_for(:javascript) { javascript_include_tag "admin/photo_card" } %>

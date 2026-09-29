@@ -20,8 +20,14 @@
             <% if Category.exists? %> <!-- Check if categories exist -->
               <% Category.all.each do |category| %>
                 <li>
-                  <%= link_to photos_by_category_path(param: category.name) do %>
-                    <p><%= category.name %></p>
+                  <% if category.subcategories.any? %>
+                    <%= link_to category_path(category) do %>
+                      <p><%= category.name %></p>
+                    <% end %>
+                  <% else %>
+                    <%= link_to photos_by_category_path(param: category.name) do %>
+                      <p><%= category.name %></p>
+                    <% end %>
                   <% end %>
                 </li>
               <% end %>

@@ -1,0 +1,22 @@
+<%#
+  Ejected from the administrate gem for a hand-ordered menu (Photos,
+  Categories > Subcategories nested, Projects, Users, then Upload Photos)
+  instead of the gem's alphabetical-by-route default.
+%>
+
+<nav class="navigation">
+  <%= link_to(t("administrate.navigation.back_to_app"), root_url, class: "button button--alt button--nav") if defined?(root_url) %>
+
+  <%= link_to("Photos", admin_photos_path, class: "navigation__link navigation__link--#{nav_link_state("photos")}") %>
+
+  <%= link_to("Categories", admin_categories_path, class: "navigation__link navigation__link--#{nav_link_state("categories")}") %>
+  <%= link_to("Subcategories", admin_subcategories_path, class: "navigation__link navigation__link--nested navigation__link--#{nav_link_state("subcategories")}") %>
+
+  <%= link_to("Projects", admin_projects_path, class: "navigation__link navigation__link--#{nav_link_state("projects")}") %>
+
+  <%= link_to("Users", admin_users_path, class: "navigation__link navigation__link--#{nav_link_state("users")}") %>
+
+  <%= link_to new_admin_photo_path, class: "navigation__link navigation__link--upload" do %>
+    <%= svg_icon(:upload) %> Upload Photos
+  <% end %>
+</nav>
