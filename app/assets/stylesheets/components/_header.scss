@@ -1,5 +1,3 @@
-HTML CSS JSResult Skip Results Iframe EDIT ON
-
 /* RESET RULES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 :root {
@@ -70,7 +68,7 @@ body {
   display: flex;
   justify-content: space-between;
   z-index: 2;
-  background: var(--lightpurple);
+  background: transparent;
   transition: transform 0.4s;
 }
 
@@ -110,39 +108,30 @@ body {
   text-align: center;
   overflow: auto;
   z-index: 1;
-  background: var(--lightpurple);
+  background: transparent;
 }
 
 .page-header .menu-categories a,
 .page-header .menu-projects a {
   font-size: 1.5rem;
   font-family: 'camiloFont';
-  color: #3852a4;
+  color: #d1d3d4;
 }
 
 .page-header .menu-categories p,
 .page-header .menu-projects p {
-  color: #3852a4;
+  color: #d1d3d4;
   line-height: 0.5;
   margin-bottom: 10px;
 }
 
 .page-header .menu-categories p:hover,
 .page-header .menu-projects p:hover {
-  color: #d1d3d4;
+  color: #3852a4;
 }
 
 .page-header .sub-menu a {
   font-size: 1.5rem;
-}
-
-.lottie-wrapper {
-  position: fixed;
-  bottom: 50px;
-  right: 25px;
-  z-index: 1;
-  padding: 5px;
-  border-radius: 5px;
 }
 
 .page-main section {
@@ -188,25 +177,12 @@ body {
   transform: rotate(45deg);
 }
 
-.menu-open-with-lottie .page-header .menu-categories,
-.menu-open-with-lottie .page-header .menu-projects {
-  padding: 5vh 0;
-}
-
 .scroll-down .trigger-menu-wrapper {
   transform: translate3d(0, -100%, 0);
 }
 
-.scroll-down .lottie-wrapper {
-  background: var(--darkgray);
-}
-
 .scroll-up .trigger-menu-wrapper {
   transform: none;
-}
-
-.scroll-up:not(.menu-open) .trigger-menu-wrapper {
-  background: var(--lightpurple);
 }
 
 .navbar-brand {
@@ -219,28 +195,20 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-//   .trigger-menu-wrapper {
-//     flex-direction: column;
-//     align-items: center;
-//     padding: 20px;
-//   }
-
   .page-header .trigger-menu-categories,
   .page-header .trigger-menu-projects {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
     margin: 5px;
   }
 
-  // .spanmenus {
-  //   display: table-row;
-  // }
-
-  p {
+  .page-header .menu-categories p,
+  .page-header .menu-projects p {
      font-size: 2rem;
    }
 
   .navbar-brand img {
-    width: 80%;
+    max-width: 100px;
     margin-top: 10%;
   }
 
@@ -255,19 +223,20 @@ body {
 
 
 @media screen and (max-width: 480px) {
-
   .page-header .trigger-menu-categories,
   .page-header .trigger-menu-projects {
     font-size: 1.5rem;
-    margin-bottom: 5px;
+    letter-spacing: 0.02em;
+    margin: 4px 6px;
   }
 
   .navbar-brand img {
-    width: 100%;
+    max-width: 85px;
     margin-top: 10%;
   }
 
-  p {
+  .page-header .menu-categories p,
+  .page-header .menu-projects p {
     font-size: 1.5rem;
     }
 }
