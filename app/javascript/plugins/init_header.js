@@ -2,7 +2,7 @@
 // initHeader() reruns on every Turbolinks visit (see application.js), but
 // `window` itself persists across visits while `body` and its children get
 // replaced. Keep the scroll listener a singleton so it isn't re-added (with
-// a stale, detached `body`/`lottiePlayer`) on every navigation.
+// a stale, detached `body`) on every navigation.
 let scrollHandler = null;
 
 const initHeader = () => {
@@ -10,7 +10,6 @@ const initHeader = () => {
 const body = document.body;
 const triggerMenuCategories = document.querySelector(".page-header .trigger-menu-categories");
 const triggerMenuProjects = document.querySelector(".page-header .trigger-menu-projects");
-const lottiePlayer = document.querySelector("lottie-player");
 const scrollUp = "scroll-up";
 const scrollDown = "scroll-down";
 let lastScroll = 0;
@@ -40,7 +39,6 @@ scrollHandler = () => {
     // down
     body.classList.remove(scrollUp);
     body.classList.add(scrollDown);
-    lottiePlayer.play();
   } else if (
     currentScroll < lastScroll &&
     body.classList.contains(scrollDown)
@@ -48,7 +46,6 @@ scrollHandler = () => {
     // up
     body.classList.remove(scrollDown);
     body.classList.add(scrollUp);
-    lottiePlayer.stop();
   }
   lastScroll = currentScroll;
 };
