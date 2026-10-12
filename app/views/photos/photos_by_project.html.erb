@@ -23,8 +23,8 @@
         <div class="carousel-inner" role="listbox">
           <% @photos.each_with_index do |photo, n| %>
             <div class="carousel-item <%= 'active' if n.zero? %>">
-              <img class="d-block w-100 carousel-photo"
-               src="<%= cl_image_path photo.photo.key, width: 1600, quality: :auto, fetch_format: :auto %>" loading="<%= n.zero? ? "eager" : "lazy" %>">
+              <img class="d-block w-100"
+               src="<%= cl_image_path photo.photo.key, width: 1200, crop: :limit, quality: :auto, fetch_format: :auto %>" loading="<%= n.zero? ? "eager" : "lazy" %>">
               <p class="carousel-photo-caption text-center mt-1"><%= photo.description %></p>
             </div>
           <% end %>

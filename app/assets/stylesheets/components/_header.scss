@@ -80,7 +80,7 @@ body {
   display: flex;
   align-items: center;
   font-size: 3.0rem;
-  color: #d1d3d4;
+  color: #fff;
   letter-spacing: 0.2em;
   font-family: 'camiloFont';
 }
@@ -93,7 +93,7 @@ body {
 
 .page-header .trigger-menu-categories svg,
 .page-header .trigger-menu-projects svg {
-  fill: #d1d3d4;
+  fill: #fff;
   margin-right: 8px;
   transition: transform 0.3s;
 }
@@ -115,12 +115,12 @@ body {
 .page-header .menu-projects a {
   font-size: 1.5rem;
   font-family: 'camiloFont';
-  color: #d1d3d4;
+  color: #fff;
 }
 
 .page-header .menu-categories p,
 .page-header .menu-projects p {
-  color: #d1d3d4;
+  color: #fff;
   line-height: 0.5;
   margin-bottom: 10px;
 }
@@ -225,9 +225,9 @@ body {
 @media screen and (max-width: 480px) {
   .page-header .trigger-menu-categories,
   .page-header .trigger-menu-projects {
-    font-size: 1.5rem;
-    letter-spacing: 0.02em;
-    margin: 4px 6px;
+    font-size: 1.8rem;
+    letter-spacing: 0.01em;
+    margin: 4px 4px;
   }
 
   .navbar-brand img {

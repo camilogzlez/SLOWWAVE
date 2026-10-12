@@ -31,6 +31,18 @@ const initLightbox = () => {
         }
       });
     });
+
+    // The rest of the slides are loading="lazy", so a non-active (display:none)
+    // slide never fetches its image until Bootstrap makes it active -- meaning
+    // every next/prev click used to trigger a fresh, visible-stall download.
+    // Once the visitor has actually opened the lightbox, prefetch everything
+    // else in this set in the background so clicking through feels instant.
+    modalEl.addEventListener("shown.bs.modal", () => {
+      items.forEach((item) => {
+        const img = item.querySelector("img[loading='lazy']");
+        if (img) img.loading = "eager";
+      });
+    });
   });
 };
 
