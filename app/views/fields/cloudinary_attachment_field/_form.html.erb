@@ -4,7 +4,7 @@
   <%= f.file_field field.attribute, direct_upload: true %>
   <% if field.data.attached? %>
     <div class="preview">
-      <%= image_tag field.data.variant(resize: "200x200"), alt: 'Cloudinary Image Preview', style: 'max-width: 200px; height: auto;' %>
+      <%= image_tag cl_image_path(field.data.key, width: 400, crop: :limit, quality: :auto, fetch_format: :auto), alt: 'Cloudinary Image Preview', style: 'max-width: 200px; height: auto;' %>
     </div>
   <% end %>
 </div>
