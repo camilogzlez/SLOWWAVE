@@ -1,6 +1,6 @@
 
 <% if field.data.present? %>
-  <%= image_tag field.data, alt: 'Cloudinary Image', style: 'width: 300px; height: auto;' %>
+  <%= image_tag cl_image_path(field.data.key, width: 600, crop: :limit, quality: :auto, fetch_format: :auto), alt: 'Cloudinary Image', style: 'width: 300px; height: auto;' %>
 <% else %>
   No image available.
 <% end %>

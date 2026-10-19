@@ -10,7 +10,7 @@ class Photo < ApplicationRecord
   def thumbnail_url(width: 50, height: 50)
     # Generate the Cloudinary URL for the attached photo
     if photo.attached?
-      Cloudinary::Utils.cloudinary_url(photo.key, width:, height:, crop: :fill)
+      Cloudinary::Utils.cloudinary_url(photo.key, width:, height:, crop: :fill, quality: :auto, fetch_format: :auto)
     end
   end
 
