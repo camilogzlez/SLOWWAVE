@@ -7,7 +7,7 @@
 <div class="subcategory-card" data-subcategory-id="<%= subcategory.id %>" data-update-url="<%= quick_update_admin_subcategory_path(subcategory) %>">
   <div class="photo-card-media">
     <% if subcategory.cover_photo&.photo&.attached? %>
-      <img class="photo-card-thumb" src="<%= subcategory.cover_photo.thumbnail_url(width: 320, height: 320) %>" alt="<%= subcategory.name %>" draggable="false">
+      <img class="photo-card-thumb" src="<%= subcategory.cover_photo.thumbnail_url %>" alt="<%= subcategory.name %>" draggable="false">
     <% else %>
       <div class="photo-card-thumb photo-card-thumb--empty"></div>
     <% end %>

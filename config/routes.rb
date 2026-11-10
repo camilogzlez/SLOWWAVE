@@ -13,8 +13,18 @@ Rails.application.routes.draw do
         end
       end
       resources :photos do
+        collection do
+          post :bulk_assign
+          delete :bulk_destroy
+        end
         member do
           patch :quick_update
+        end
+      end
+      resources :home_tiles, only: %i[create update destroy] do
+        collection do
+          get :grid
+          patch :reorder
         end
       end
       resources :projects do

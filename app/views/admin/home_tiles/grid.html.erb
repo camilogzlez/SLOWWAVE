@@ -1,0 +1,35 @@
+<% content_for(:title) { "Home page" } %>
+
+<header class="main-content__header">
+  <h1 class="main-content__page-title"><%= content_for(:title) %></h1>
+  <div>
+    <span class="save-status hg-status" aria-live="polite"></span>
+    <%= link_to "View home page", root_path, class: "button", target: "_blank", rel: "noopener" %>
+  </div>
+</header>
+
+<section class="main-content__body hg-layout"
+  data-create-url="<%= admin_home_tiles_path %>"
+  data-reorder-url="<%= reorder_admin_home_tiles_path %>">
+  <div>
+    <p class="hg-help">Drag photos from the list onto the grid, and drag tiles to reorder them. W and H set how many columns and rows each photo covers. Changes save automatically. This preview shows the layout on a desktop screen; on phones the photos stack in one column.</p>
+    <div id="home-grid" class="hg-grid">
+      <%= render partial: "admin/home_tiles/tile", collection: @home_tiles, as: :tile %>
+    </div>
+  </div>
+
+  <aside class="hg-sidebar">
+    <%= form_tag grid_admin_home_tiles_path, method: :get, class: "hg-filter" do %>
+      <%= text_field_tag :q, params[:q], placeholder: "Search by title", id: nil %>
+      <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), include_blank: "All categories", id: nil, onchange: "this.form.submit()" %>
+    <% end %>
+
+    <div id="home-pool" class="hg-pool">
+      <%= render partial: "admin/home_tiles/pool_item", collection: @pool_photos, as: :photo %>
+    </div>
+
+    <%= render("pagination", resources: @pool_photos) %>
+  </aside>
+</section>
+
+<% content_for(:javascript) { javascript_include_tag "admin/home_grid" } %>

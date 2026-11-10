@@ -18,6 +18,13 @@ module Admin
         redirect_to new_admin_photo_path, alert: "Please choose at least one file to upload." and return
       end
 
+      too_big = files.select { |file| file.size > Photo::MAX_UPLOAD_SIZE }
+      if too_big.any?
+        redirect_to new_admin_photo_path,
+                    alert: "Nothing was uploaded. These files are over #{Photo.upload_size_label}, so export them smaller first: " \
+                           "#{too_big.map(&:original_filename).join(', ')}" and return
+      end
+
       created = 0
 
       ActiveRecord::Base.transaction do
@@ -65,7 +72,51 @@ module Admin
       render json: { ok: false, error: e.message }, status: :unprocessable_entity
     end
 
+    def bulk_assign
+      photos = bulk_photos
+
+      ActiveRecord::Base.transaction do
+        if params[:category_id].present?
+          photos.each { |photo| add_to_category!(photo, params[:category_id], params[:subcategory_id].presence) }
+        elsif params[:project_id].present?
+          photos.each { |photo| ProjectPhoto.find_or_create_by!(photo:, project_id: params[:project_id]) }
+        else
+          raise ArgumentError, "Choose a category or a project."
+        end
+      end
+
+      flash[:notice] = "#{photos.size} photo(s) updated."
+      render json: { ok: true }
+    rescue => e
+      render json: { ok: false, error: e.message }, status: :unprocessable_entity
+    end
+
+    def bulk_destroy
+      photos = bulk_photos
+
+      ActiveRecord::Base.transaction { photos.each(&:destroy!) }
+
+      flash[:notice] = "#{photos.size} photo(s) deleted."
+      render json: { ok: true }
+    rescue => e
+      render json: { ok: false, error: e.message }, status: :unprocessable_entity
+    end
+
     private
+
+    def bulk_photos
+      photos = Photo.where(id: Array(params[:photo_ids])).to_a
+      raise ArgumentError, "Select at least one photo." if photos.empty?
+
+      photos
+    end
+
+    # A photo already in the category keeps its subcategory unless a new one was chosen.
+    def add_to_category!(photo, category_id, subcategory_id)
+      category_photo = CategoryPhoto.find_or_initialize_by(photo:, category_id:)
+      category_photo.subcategory_id = subcategory_id if subcategory_id
+      category_photo.save!
+    end
 
     def load_card_data
       @all_categories = Category.includes(:subcategories).order(:name)

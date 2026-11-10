@@ -14,6 +14,11 @@
   </div>
 
   <%= render("pagination", resources: resources) %>
+
+  <%= render "admin/shared/bulk_toolbar", all_categories: @all_categories, all_projects: @all_projects %>
 </section>
 
-<% content_for(:javascript) { javascript_include_tag "admin/photo_card" } %>
+<% content_for(:javascript) do %>
+  <%= javascript_include_tag "admin/photo_card" %>
+  <%= javascript_include_tag "admin/bulk_actions" %>
+<% end %>

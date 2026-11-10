@@ -9,12 +9,9 @@ module Admin
     # Administrate is an isolated engine, so it doesn't auto-include the host
     # app's ApplicationHelper (e.g. svg_icon) the way normal controllers do.
     helper ApplicationHelper
+    include AdminAccess
 
-    before_action :authenticate_user!
-
-    def authenticate_admin
-      # TODO Add authentication logic here.
-    end
+    before_action :require_admin!
 
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.

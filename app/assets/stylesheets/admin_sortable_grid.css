@@ -324,3 +324,248 @@
 .navigation__link--upload svg {
   flex-shrink: 0;
 }
+
+/* --- bulk selection --- */
+
+.pc-select {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.pc-select input {
+  margin: 0;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.photo-card--selected {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #2563eb;
+}
+
+.bulk-toolbar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 24px;
+  margin-top: 20px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  box-shadow: 0 -4px 16px rgba(20, 20, 20, 0.12);
+}
+
+.bulk-toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.bulk-toolbar select {
+  width: auto;
+  margin: 0;
+}
+
+.bulk-toolbar .save-status {
+  min-height: 0;
+}
+
+/* --- home page grid editor --- */
+
+.hg-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 20px;
+  align-items: start;
+}
+
+.hg-help {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+/* Same tracks as .containersup.home-grid on the public home page, scaled down by
+   --hg-scale (set in home_grid.js) so the preview keeps its proportions. */
+.hg-grid {
+  --hg-scale: 0.6;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: calc(233px * var(--hg-scale));
+  grid-gap: calc(15px * var(--hg-scale));
+  grid-auto-flow: dense;
+  min-height: 300px;
+  padding: 4px;
+  background: #f7f7f8;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+}
+
+.hg-tile {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #e9e9e9;
+  cursor: grab;
+}
+
+.hg-tile:active {
+  cursor: grabbing;
+}
+
+.hg-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hg-tile--dragging {
+  opacity: 0.4;
+}
+
+.hg-tile--placeholder {
+  background: rgba(37, 99, 235, 0.15);
+  outline: 2px dashed #2563eb;
+  outline-offset: -2px;
+}
+
+.hg-tile-controls {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.hg-tile-controls label {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 1px 3px;
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 4px;
+}
+
+.hg-tile-controls select {
+  width: auto;
+  margin: 0;
+  padding: 0 2px;
+  height: auto;
+  font-size: 0.7rem;
+}
+
+.hg-remove,
+.hg-add {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  line-height: 1;
+  font-size: 1rem;
+  color: #333;
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hg-remove {
+  margin-left: auto;
+}
+
+.hg-remove:hover {
+  background: #dc2626;
+  color: #fff;
+}
+
+.hg-add:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+.hg-sidebar {
+  position: sticky;
+  top: 10px;
+}
+
+.hg-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.hg-filter input,
+.hg-filter select {
+  width: 100%;
+  margin: 0;
+}
+
+.hg-pool {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.hg-pool-item {
+  position: relative;
+  cursor: grab;
+}
+
+.hg-pool-item img {
+  display: block;
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.hg-pool-title {
+  display: block;
+  font-size: 0.7rem;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hg-add {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+@media screen and (max-width: 900px) {
+  .hg-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hg-sidebar {
+    position: static;
+  }
+}

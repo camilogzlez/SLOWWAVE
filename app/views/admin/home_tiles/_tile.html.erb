@@ -1,0 +1,15 @@
+<div class="hg-tile" draggable="true" data-id="<%= tile.id %>"
+  data-url="<%= admin_home_tile_path(tile) %>"
+  style="grid-column: span <%= tile.column_span %>; grid-row: span <%= tile.row_span %>;">
+  <img src="<%= tile.image_url %>" alt="<%= tile.photo.title %>" loading="lazy" draggable="false">
+
+  <div class="hg-tile-controls">
+    <label title="Columns">W
+      <%= select_tag nil, options_for_select(HomeTile::COLUMN_SPANS, tile.column_span), class: "hg-column-span", id: nil %>
+    </label>
+    <label title="Rows">H
+      <%= select_tag nil, options_for_select(HomeTile::ROW_SPANS, tile.row_span), class: "hg-row-span", id: nil %>
+    </label>
+    <button type="button" class="hg-remove" title="Remove from home page">&times;</button>
+  </div>
+</div>
