@@ -1,8 +1,8 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :require_admin!, only: %i[new create]
 
   def index
-    @photos = Photo.all
+    @home_tiles = HomeTile.includes(photo: { photo_attachment: :blob }).order(:position)
   end
 
   def show

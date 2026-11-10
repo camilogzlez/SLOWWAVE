@@ -7,6 +7,8 @@
 <nav class="navigation">
   <%= link_to(t("administrate.navigation.back_to_app"), root_url, class: "button button--alt button--nav") if defined?(root_url) %>
 
+  <%= link_to("Home page", grid_admin_home_tiles_path, class: "navigation__link navigation__link--#{nav_link_state("home_tiles")}") %>
+
   <%= link_to("Photos", admin_photos_path, class: "navigation__link navigation__link--#{nav_link_state("photos")}") %>
 
   <%= link_to("Categories", admin_categories_path, class: "navigation__link navigation__link--#{nav_link_state("categories")}") %>

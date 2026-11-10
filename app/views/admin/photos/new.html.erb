@@ -41,9 +41,13 @@
 
     <fieldset>
       <legend>Files</legend>
-      <%= file_field_tag "files[]", multiple: true, accept: "image/*", required: true %>
+      <p>Each file must be <%= Photo.upload_size_label %> or smaller (export at 2400px, quality 85). Upload about 10–15 photos at a time.</p>
+      <%= file_field_tag "files[]", multiple: true, accept: "image/*", required: true, id: "upload-files", data: { max_size: Photo::MAX_UPLOAD_SIZE, size_label: Photo.upload_size_label } %>
+      <p class="save-status save-status--error upload-size-error" aria-live="polite"></p>
     </fieldset>
 
-    <%= submit_tag "Upload photos" %>
+    <%= submit_tag "Upload photos", id: "upload-submit" %>
   <% end %>
 </div>
+
+<% content_for(:javascript) { javascript_include_tag "admin/upload_limit" } %>

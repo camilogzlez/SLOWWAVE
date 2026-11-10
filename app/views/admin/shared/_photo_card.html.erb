@@ -16,7 +16,11 @@
 
 <div class="photo-card" data-photo-id="<%= photo.id %>" data-update-url="<%= quick_update_admin_photo_path(photo) %>">
   <div class="photo-card-media">
-    <img class="photo-card-thumb" src="<%= photo.thumbnail_url(width: 320, height: 320) %>" alt="<%= photo.title %>" draggable="false">
+    <img class="photo-card-thumb" src="<%= photo.thumbnail_url %>" alt="<%= photo.title %>" loading="lazy" draggable="false">
+
+    <label class="pc-select" title="Select this photo">
+      <input type="checkbox" class="pc-select-checkbox" value="<%= photo.id %>" autocomplete="off">
+    </label>
 
     <% if draggable %>
       <span class="drag-handle" title="Drag anywhere on the card to reorder"><%= svg_icon(:drag) %></span>

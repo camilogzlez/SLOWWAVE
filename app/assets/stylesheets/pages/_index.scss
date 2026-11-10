@@ -73,6 +73,14 @@ body {
 }
 
 
+// Even rows on the home page only, so H always means the same height. 233px keeps
+// H=3 at the 730px most home tiles already had. Galleries keep their own tracks.
+@media screen and (min-width:501px) {
+  .containersup.home-grid {
+    grid-auto-rows: 233px;
+  }
+}
+
 @media screen and (max-width:500px) {
   .containersup {
     grid-template-columns: repeat(1, 1fr);

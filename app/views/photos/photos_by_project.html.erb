@@ -3,7 +3,7 @@
     <div class="gallery-container w-3 h-2">
       <div class="gallery-item">
         <div class="image" data-bs-toggle="modal" data-bs-target="#lightbox" data-slide-to="<%= n %>">
-          <img src="<%= cl_image_path photo.photo.key, width: 600, height: 600, crop: :fill, quality: :auto, fetch_format: :auto %>" loading="<%= n.zero? ? "eager" : "lazy" %>" />
+          <img src="<%= photo.thumbnail_url %>" loading="<%= n.zero? ? "eager" : "lazy" %>" />
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
           <% @photos.each_with_index do |photo, n| %>
             <div class="carousel-item <%= 'active' if n.zero? %>">
               <img class="d-block w-100"
-               src="<%= cl_image_path photo.photo.key, width: 1200, crop: :limit, quality: :auto, fetch_format: :auto %>" loading="<%= n.zero? ? "eager" : "lazy" %>">
+               src="<%= photo.full_url %>" loading="<%= n.zero? ? "eager" : "lazy" %>">
               <p class="carousel-photo-caption text-center mt-1"><%= photo.description %></p>
             </div>
           <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_09_27_151849) do
+ActiveRecord::Schema.define(version: 2026_11_06_120000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2026_09_27_151849) do
     t.index ["category_id"], name: "index_category_photos_on_category_id"
     t.index ["photo_id"], name: "index_category_photos_on_photo_id"
     t.index ["subcategory_id"], name: "index_category_photos_on_subcategory_id"
+  end
+
+  create_table "home_tiles", force: :cascade do |t|
+    t.bigint "photo_id", null: false
+    t.integer "position"
+    t.integer "column_span", default: 3, null: false
+    t.integer "row_span", default: 3, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photo_id"], name: "index_home_tiles_on_photo_id", unique: true
   end
 
   create_table "photos", force: :cascade do |t|
@@ -117,6 +127,7 @@ ActiveRecord::Schema.define(version: 2026_09_27_151849) do
   add_foreign_key "category_photos", "categories"
   add_foreign_key "category_photos", "photos"
   add_foreign_key "category_photos", "subcategories"
+  add_foreign_key "home_tiles", "photos"
   add_foreign_key "photos", "users"
   add_foreign_key "project_photos", "photos"
   add_foreign_key "project_photos", "projects"
