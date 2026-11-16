@@ -35,9 +35,9 @@ class AdminHomeTilesTest < ActionDispatch::IntegrationTest
     tile = HomeTile.find_by!(photo: @photo)
     assert_equal [3, 3], [tile.column_span, tile.row_span]
 
-    patch admin_home_tile_path(tile), params: { column_span: 6, row_span: 1 }, as: :json
+    patch admin_home_tile_path(tile), params: { column_span: 6, row_span: 6 }, as: :json
     assert_response :success
-    assert_equal [6, 1], tile.reload.then { |t| [t.column_span, t.row_span] }
+    assert_equal [6, 6], tile.reload.then { |t| [t.column_span, t.row_span] }
 
     other = HomeTile.create!(photo: @other)
     patch reorder_admin_home_tiles_path, params: { order: [other.id, tile.id] }, as: :json

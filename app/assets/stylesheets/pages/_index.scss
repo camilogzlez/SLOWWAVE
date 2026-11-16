@@ -72,6 +72,18 @@ body {
   grid-row: span 3;
 }
 
+.h-4 {
+  grid-row: span 4;
+}
+
+.h-5 {
+  grid-row: span 5;
+}
+
+.h-6 {
+  grid-row: span 6;
+}
+
 
 // Even rows on the home page only, so H always means the same height. 233px keeps
 // H=3 at the 730px most home tiles already had. Galleries keep their own tracks.
@@ -87,7 +99,7 @@ body {
     grid-auto-rows: 70vw;
   }
   .w-1,.w-2,.w-3,.w-4,.w-5,.w-6,
-  .h-1,.h-2,.h-3 {
+  .h-1,.h-2,.h-3,.h-4,.h-5,.h-6 {
     grid-column: span 1;
     grid-row: span 1;
   }

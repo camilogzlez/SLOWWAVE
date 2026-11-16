@@ -5,7 +5,7 @@ class Photo < ApplicationRecord
   FULL_OPTIONS = { width: 1200, crop: :limit, quality: :auto, fetch_format: :auto, secure: true }.freeze
   HOME_OPTIONS = { width: 1000, crop: :limit, quality: :auto, fetch_format: :auto, secure: true }.freeze
   HOME_LARGE_OPTIONS = HOME_OPTIONS.merge(width: 1400).freeze
-  HOME_LARGE_MIN_COLUMNS = 4
+  HOME_LARGE_MIN_SPAN = 4
 
   # Exports at 2400px / quality 85 are about 0.6 MB; anything far bigger is
   # almost certainly a full-resolution original uploaded by mistake.
@@ -31,8 +31,10 @@ class Photo < ApplicationRecord
     image_url(FULL_OPTIONS)
   end
 
-  def home_url(column_span)
-    image_url(column_span >= HOME_LARGE_MIN_COLUMNS ? HOME_LARGE_OPTIONS : HOME_OPTIONS)
+  # Wide or tall tiles fill more of the screen, so they get the larger image.
+  def home_url(column_span, row_span = 1)
+    large = [column_span, row_span].max >= HOME_LARGE_MIN_SPAN
+    image_url(large ? HOME_LARGE_OPTIONS : HOME_OPTIONS)
   end
 
   def category_names

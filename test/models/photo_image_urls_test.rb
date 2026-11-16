@@ -19,5 +19,6 @@ class PhotoImageUrlsTest < ActiveSupport::TestCase
   test "large home tiles get a wider image" do
     assert_includes @photo.home_url(3), "w_1000"
     assert_includes @photo.home_url(4), "w_1400"
+    assert_includes @photo.home_url(2, 5), "w_1400"
   end
 end
