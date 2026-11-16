@@ -1,6 +1,6 @@
 class HomeTile < ApplicationRecord
   COLUMN_SPANS = (1..6).to_a.freeze
-  ROW_SPANS = (1..3).to_a.freeze
+  ROW_SPANS = (1..6).to_a.freeze
 
   belongs_to :photo
 
@@ -11,6 +11,6 @@ class HomeTile < ApplicationRecord
   validates :row_span, inclusion: { in: ROW_SPANS }
 
   def image_url
-    photo.home_url(column_span)
+    photo.home_url(column_span, row_span)
   end
 end
