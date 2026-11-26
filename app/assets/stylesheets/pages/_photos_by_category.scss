@@ -156,3 +156,201 @@ body {
   display: none! important;
   content: none! important;
 }
+// Category, subcategory and project pages: the carousel sits over a faded grid,
+// and the grid view is the same grid with the overlay gone.
+.gallery-carousel-open {
+  overflow: hidden;
+}
+
+// The header hides itself on scroll down; opening the carousel from further down
+// the grid would otherwise leave it hidden.
+.gallery-carousel-open body .trigger-menu-wrapper {
+  transform: none;
+}
+
+.gallery-carousel-view {
+  position: fixed;
+  inset: 0;
+  z-index: 1; // under the header (z-index 2)
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 4.5rem; // keeps the photo clear of the header menu
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.photo-gallery[data-view="grid"] .gallery-carousel-view {
+  display: none;
+}
+
+// 90% of the screen height, less on short screens so the photo and caption fit
+// under the header; landscape photos too wide for that shrink to fit between the arrows.
+#gallery-carousel .carousel-item img {
+  width: auto;
+  height: 90vh;
+  max-width: calc(100vw - 9rem);
+  max-height: calc(100vh - 7.5rem);
+  margin: auto;
+  object-fit: contain;
+}
+
+#gallery-carousel .carousel-photo-caption {
+  margin: 0.25rem 0 0;
+  padding: 0;
+}
+
+.gallery-control {
+  position: relative;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.4rem;
+  border: 0;
+  background: none;
+  color: #000;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.gallery-control:hover,
+.gallery-control:focus-visible {
+  opacity: 1;
+}
+
+.gallery-control svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.gallery-control[data-tooltip]:hover::after,
+.gallery-control[data-tooltip]:focus-visible::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  color: inherit;
+  font-family: 'camiloFont';
+  font-size: 2.2rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+// Below the header's menu, which keeps the very top right.
+.gallery-topbar {
+  position: absolute;
+  top: 5rem;
+  right: 1.5rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+// Left side, under the logo.
+.gallery-counter {
+  position: fixed;
+  top: 5.5rem;
+  left: 1.5rem;
+  color: #000;
+  opacity: 0.7;
+  font-family: 'camiloFont';
+  font-size: 2.2rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 3.5rem;
+  height: 3.5rem;
+  transform: translateY(-50%);
+}
+
+.gallery-arrow--prev {
+  left: 1rem;
+}
+
+.gallery-arrow--next {
+  right: 1rem;
+}
+
+// Clicking either half of the photo area pages back or forward.
+.gallery-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 50%;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.gallery-side--prev {
+  left: 0;
+  cursor: w-resize;
+}
+
+.gallery-side--next {
+  right: 0;
+  cursor: e-resize;
+}
+
+// White on the grid photos; the shadow keeps it readable over light ones.
+.gallery-carousel-return {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 2.75rem;
+  z-index: 1;
+  width: 3rem;
+  height: 3rem;
+  color: #fff;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.45));
+}
+
+.gallery-carousel-return:hover,
+.gallery-carousel-return:focus-visible {
+  transform: scale(1.1);
+}
+
+.photo-gallery[data-view="carousel"] .gallery-carousel-return {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  #gallery-carousel .carousel-item img {
+    height: auto;
+    max-width: calc(100vw - 1rem);
+    max-height: 70vh;
+  }
+
+  .gallery-topbar {
+    top: 4rem;
+    right: 0.75rem;
+  }
+
+  .gallery-counter {
+    top: 4.5rem;
+    left: 0.75rem;
+  }
+
+  .gallery-arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .gallery-arrow--prev {
+    left: 0.25rem;
+  }
+
+  .gallery-arrow--next {
+    right: 0.25rem;
+  }
+}

@@ -8,7 +8,7 @@ import "bootstrap";
 import { initHeader } from "../plugins/init_header";
 import { initSelect2 } from "../plugins/init_select2";
 import { initScrollKeeper } from "../plugins/init_scroll_keeper";
-import { initLightbox } from "../plugins/init_lightbox";
+import { initGallery } from "../plugins/init_gallery";
 import Turbolinks from "turbolinks";
 Turbolinks.start();
 
@@ -35,5 +35,5 @@ document.addEventListener("turbolinks:load", () => {
     initSelect2();
     initHeader();
     initScrollKeeper();
-    initLightbox();
+    initGallery();
 });
